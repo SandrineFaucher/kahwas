@@ -30,7 +30,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <a class="navbar-brand" href="{{route ('campagnes.index')}}">
+                            Promotions
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

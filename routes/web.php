@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CampagneController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+//***********************Route d'affichage  de la page home***********************/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//*******************Route pour les méthodes du controller Campagne**************************/
+Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
