@@ -20,13 +20,12 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             AvisSeeder::class,
             CommandeSeeder::class,
-            CampagneSeeder::class, 
-        ]);
-        // \App\Models\User::factory(10)->create();
+            CampagneSeeder::class,
+            FavoriSeeder::class,
+            CampagneArticleSeeder::class,
+            CommandeArticleSeeder::class
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        ]);
+        
     }
 }
