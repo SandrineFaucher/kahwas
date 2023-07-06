@@ -1,7 +1,10 @@
 @extends('layout.app')
 
-@section('content')
+@section('title')
+    Mon compte
+@endsection
 
+@section('content')
 
     <!-- Container
     ============================================================ -->
@@ -15,9 +18,9 @@
                 <div class="card">
 
 
-                    <!-- Card header "Inscription"
+                    <!-- Card header "S'inscrire"
                     ============================================================ -->
-                    <div class="card-header">{{ __('Inscription') }}</div>
+                    <div class="card-header">{{ __('Modification des informations personnelles') }}</div>
 
 
                     <!-- Card body
@@ -25,10 +28,11 @@
                     <div class="card-body">
 
 
-                        <!-- Formulaire inscription
+                        <!-- Formulaire modif infos
                         ============================================================ -->
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('user.update', $user) }}">
                             @csrf
+                            @method('PUT')
 
 
                             <!-- Section nom + prenom
@@ -39,10 +43,10 @@
                                 <!-- Nom
                                 ============================================================ -->
                                 <div class="col mb-3">
-                                    <label for="nom" class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
+                                    <label for="nom" class="col-form-label ms-1"><small>{{ __('Nouveau nom') }}</small></label>
 
                                     <div class="col-md-12">
-                                        <input id="nom" type="text" placeholder="Nom" class="form-control @error('name') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+                                        <input id="nom" type="text" placeholder="Nouveau nom" class="form-control @error('name') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
 
                                         @error('nom')
                                             <span class="invalid-feedback" role="alert">
@@ -56,10 +60,10 @@
                                 <!-- Prenom
                                 ============================================================ -->
                                 <div class="col mb-3">
-                                    <label for="prenom" class="col-form-label ms-1"><small>{{ __('Prénom') }}</small></label>
+                                    <label for="prenom" class="col-form-label ms-1"><small>{{ __('Nouveau prénom') }}</small></label>
 
                                     <div class="col-md-12">
-                                        <input id="prenom" type="text" placeholder="Prénom" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
+                                        <input id="prenom" type="text" placeholder="Nouveau prénom" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
 
                                         @error('prenom')
                                             <span class="invalid-feedback" role="alert">
@@ -76,10 +80,10 @@
                             <!-- Email
                             ============================================================ -->
                             <div class="col mb-3">
-                                <label for="email" class="col-form-label ms-1"><small>{{ __('Adresse e-mail') }}</small></label>
+                                <label for="email" class="col-form-label ms-1"><small>{{ __('Nouvelle adresse e-mail') }}</small></label>
 
                                 <div class="col-md-12">
-                                    <input id="email" type="email" placeholder="Adresse e-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input id="email" type="email" placeholder="Nouvelle adresse e-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -90,48 +94,33 @@
                             </div>
 
 
-                            <!-- section mot de passe
+                            <!-- sectionBoutton validation / supression
                             ============================================================ -->
-                            <div class="d-flex justify-content-center gap-2">
+                            <div class="d-flex justify-content-between mt-4">
 
 
-                                <!-- Mot de passe
+                                <!-- Boutton validation modification
                                 ============================================================ -->
-                                <div class="col mb-3">
-                                    <label for="password" class="col-form-label ms-1"><small>{{ __('Mot de passe') }}</small></label>
-
+                                <div class="row mb-0">
                                     <div class="col-md-12">
-                                        <input id="password" type="password" placeholder="Mot de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <button type="submit" class="btn btn-primary"><small>{{ __('Modifier mes informations') }}</small></button>
                                     </div>
                                 </div>
 
 
-                                <!-- Confirmation mot de passe
+                                <!-- Boutton supression compte
                                 ============================================================ -->
-                                <div class="col mb-3">
-                                    <label for="password-confirm" class="col-form-label ms-1"><small>{{ __('Confirmer mot de passe') }}</small></label>
-
+                                <div class="row mb-0">
                                     <div class="col-md-12">
-                                        <input id="password-confirm" type="password" placeholder="Confirmer mot de passe" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <form action="{{route('user.destroy', $user)}}" method="POST">
+                                            @csrf
+                                            @method("delete")
+                                            <button type="submit" class="btn btn-danger col-12"><small>Supprimer le compte</small></button>
+                                        </form>
                                     </div>
                                 </div>
 
 
-                            </div>
-
-
-                            <!-- Boutton validation inscription
-                            ============================================================ -->
-                            <div class="row mt-4">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary col-12"><small>{{ __('S\'inscrire') }}</small></button>
-                                </div>
                             </div>
 
 
@@ -147,6 +136,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection
