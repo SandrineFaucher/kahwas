@@ -7,7 +7,6 @@ use App\Models\Campagne;
 
 class CampagneController extends Controller
 {
-    //je recupère les infos de mes campagnes avec un Eager Loader
     
     /**
      * Display a listing of the resource.

@@ -24,7 +24,7 @@
                 
                 <div class="col-md-3 p-2">  
                 <div class="card p-2 border rounded">
-                    <img src="images/default_picture_.jpg"{{ $article->image }}" alt="article-image">
+                    <img src="{{ asset('images/' .$article->image) }}" alt="article-image">
 
                     <div>
                         <h5 class="card-title m-3">{{ $article->nom }}</h5>

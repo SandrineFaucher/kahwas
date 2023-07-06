@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-//***********************Route d'affichage  de la page home***********************/
+//***********************Route d'affichage  de la page home*********************************/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -33,3 +33,7 @@ Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
 
 //************************Route pour l'ajout au panier **************************************/
 Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');
+
+
+//*****************Route pour les méthodes du Controller commandes****************************/
+Route::resource('/commandes', \App\Http\Controllers\CommandeController::class);
