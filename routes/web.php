@@ -40,3 +40,6 @@ Route::get('/article', function () {
     return view('articles/article');
 });
 
+//route pour la page Validation Panier
+Route::get('/validation', [App\Http\Controllers\PanierController::class, 'validation'])->name('validation');
+

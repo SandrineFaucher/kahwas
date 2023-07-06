@@ -16,7 +16,7 @@ class PanierController extends Controller
 		return view("panier.show"); // resources\views\panier\show.blade.php
 	}
 
-	
+
 	# Ajout d'un produit au panier
 	public function add(Article $article, Request $request)
 	{
@@ -25,14 +25,20 @@ class PanierController extends Controller
 			"quantite" => "numeric|min:1"
 		]);
 
+		$article->campagne = getCampaign($article->id); //on récupère son éventuelle campagne en cours (sinon => null)
 		$panier = session()->get("panier"); // On récupère le panier en session
 
 		// Les informations du produit à ajouter
 		$article_details = [
 			'nom' => $article->nom,
 			'prix' => $article->prix,
-			'quantite' => $request->quantite
+			'quantite' => $request->quantite,
 		];
+
+		// si l'article est concerné par une promo ET si celle-ci est en cours => on prend en compte sa réduction
+		if ($article->campagne) {
+			$article_details['reduction'] = $article->campagne->reduction;
+		}
 
 		$panier[$article->id] = $article_details; // On ajoute ou on met à jour le produit au panier
 		session()->put("panier", $panier); // On enregistre le panier
@@ -54,10 +60,9 @@ class PanierController extends Controller
 	}
 
 
-	// Vider la panier
+	// Vider le panier
 	public function empty()
 	{
-
 		session()->forget("panier"); // On supprime le panier en session
 
 		// Redirection vers le panier
