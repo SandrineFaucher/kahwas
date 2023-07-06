@@ -78,7 +78,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
 
             <!-- Message d'ALERTE "success/danger" -->
             <div class="container-fluid text-center">
