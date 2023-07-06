@@ -1,0 +1,13 @@
+/* ****************article.blade.php*************** */
+
+.ajoutPanier {
+    background-color:#ffb500;
+    color: white
+}
+
+/* ****************show.blade.php*************** */
+
+.actualiserQuantite {
+    background-color:#3f3028;
+    color: white
+}
