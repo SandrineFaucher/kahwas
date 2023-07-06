@@ -15,11 +15,14 @@ class CampagneController extends Controller
     public function index()
     {       
             // je récupère mes campagnes et les articles associés avec un eager loading
-            $campagnes = Campagne::with('articles')->get();
+            $campagnes = Campagne::with('articles')
+            // je récupère les campagnes dont la date de fin n'est pas antérieure à la date du jour
+            ->where('date_fin', ">=", date('y-m-d'))
+            ->get();
     
             // je retourne ces infos dans la view campagne pour les afficher
             return view ('campagnes.index', ['campagnes' => $campagnes]);
-            
+                        
     }
 
     /**

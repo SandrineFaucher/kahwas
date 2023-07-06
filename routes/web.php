@@ -28,3 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //*******************Route pour les méthodes du controller Campagne**************************/
 Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
+
+
+
+//************************Route pour l'ajout au panier **************************************/
+Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');
