@@ -60,4 +60,6 @@ class Article extends Model
         return $this->belongsToMany(Campagne::class,'campagnes_articles');
     }
 
+    
+
 }

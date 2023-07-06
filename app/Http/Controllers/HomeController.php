@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
+    
+    // Function limit 3 et les notes du produits
     public function index()
     {
-        return view('home');
+        $articles = Article::orderBy('note', 'desc')
+            ->limit(3)
+            ->get();
+        //je retourne la vue home en y injectant les posts
+        return view('home', ['articles' => $articles]);
+    }
+
+    public function request()
+    {
+        $campagnes_articles = Article::orderBy('note', 'desc')
+        ->limit(3)
+            ->allowPromotionCodes()
+            ->checkout('prix');
+            return view('home', ['articles' => $campagnes_articles]);
     }
 }

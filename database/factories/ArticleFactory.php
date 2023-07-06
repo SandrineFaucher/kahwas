@@ -19,14 +19,14 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'nom' =>$this->faker->words(1, true),
-            'description' =>$this->faker->words(10, true),
-            'description_detaillee' =>$this->faker->words(50, true),
-            'image' => 'default_picture_'.rand(1,5). '.jpg',
+            'nom' => $this->faker->words(1, true),
+            'description' => $this->faker->words(10, true),
+            'description_detaillee' => $this->faker->words(50, true),
+            'image' => 'default_picture_' . rand(1, 5) . '.jpeg',
             'prix' => $this->faker->randomFloat(2, 10, 1000),
             'stock' => $this->faker->randomNumber(3, true),
-            'gamme_id' =>rand(1, Gamme::count()),
-
+            'note' => rand(3, 5),
+            'gamme_id' => rand(1, Gamme::count()),
         ];
     }
 }

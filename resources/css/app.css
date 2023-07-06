@@ -1,0 +1,35 @@
+/*
+
+couleurs:
+
+#FFB200 - orange
+#3F3028 - marron
+#A34A23 - terracotta 
+
+typographie:
+
+h1
+font-family: "cooper-black-std", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+h2,
+h...,
+p,
+a
+font-family: "june-expt-variable",sans-serif;
+    font-weight: 100;
+    font-variation-settings: 'STYL' 0;≤
+
+*/
+
+
+
+
+
+h1 {
+    font-family: "cooper-black-std", serif;
+    font-weight: 400;
+    font-style: normal;
+}
