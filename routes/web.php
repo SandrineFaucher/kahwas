@@ -40,6 +40,19 @@ Route::get('/article', function () {
     return view('articles/article');
 });
 
-//route pour la page Validation Panier
-Route::get('/validation', [App\Http\Controllers\PanierController::class, 'validation'])->name('validation');
 
+// les routes de la page Validation Panier
+
+Route::get('/validation', [App\Http\Controllers\PanierController::class, 'validation'])->name('validation')->middleware('auth');
+// "validation" pour afficher la page validation
+
+Route::post('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
+// "frais-de-port" pour afficher le formulaire frais de port
+
+
+
+
+
+
+
+Route::resource('/user', App\Http\Controllers\UserController::class)->except('index', 'create', 'store');

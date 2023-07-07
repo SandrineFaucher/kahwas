@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\PanierInterfaceRepository;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Article;
 
@@ -25,19 +25,19 @@ class PanierController extends Controller
 			"quantite" => "numeric|min:1"
 		]);
 
-		$article->campagne = getCampaign($article->id); //on récupère son éventuelle campagne en cours (sinon => null)
+		$campagneActuelle = getCampaign($article->id); //on récupère son éventuelle campagne en cours (sinon => null)
 		$panier = session()->get("panier"); // On récupère le panier en session
 
 		// Les informations du produit à ajouter
 		$article_details = [
 			'nom' => $article->nom,
 			'prix' => $article->prix,
-			'quantite' => $request->quantite,
+			'quantite' => $request->quantite
 		];
 
 		// si l'article est concerné par une promo ET si celle-ci est en cours => on prend en compte sa réduction
-		if ($article->campagne) {
-			$article_details['reduction'] = $article->campagne->reduction;
+		if ($campagneActuelle !== null) {
+			$article_details['campagne'] = $campagneActuelle;
 		}
 
 		$panier[$article->id] = $article_details; // On ajoute ou on met à jour le produit au panier
@@ -67,5 +67,43 @@ class PanierController extends Controller
 
 		// Redirection vers le panier
 		return back()->withMessage("Panier vidé");
+	}
+
+
+	public function validation()
+	{
+		$user = Auth::user(); //user connecté
+		return view("panier/validation", ['user'=>$user]);
+	}
+
+	public function fraisdeport(Request $request)
+	{
+		$fraisdeport= $request->input('fraisdeport');
+		session()->put('fraisdeport',$fraisdeport);
+		return back()->withMessage("Frais de port validés");
+
+	}
+
+
+	public function traiterFraisDePort(Request $request)
+	{
+		$fraisPort = $request->input('fraisdeport');
+
+		// Traitez les frais de port ici
+
+		return redirect('/fraisdeport')->with('success', 'Frais de port enregistrés avec succès !');
+	}
+
+	public function traiterCommande(Request $request)
+	{
+		// Récupérer les données du formulaire
+		$fraisPort = $request->input('frais_port');
+
+		// Calculer le total de la commande
+		$totalapayer = $this->calculerTotalCommande($request->all(), $fraisPort);
+
+		// Enregistrer la commande en base de données ou effectuer d'autres actions nécessaires
+
+		return redirect('/commande')->with('success', 'Commande enregistrée avec succès !');
 	}
 }
