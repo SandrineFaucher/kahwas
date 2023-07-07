@@ -30,11 +30,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li>
                         <a class="navbar-brand" href="{{route ('campagnes.index')}}">
                             Promotions
                         </a>
-                    </ul>
+                        </li>
+                        @if (Auth::user())
+                        <li>
+                        <a class="navbar-brand" href="{{ route('favoris.index') }}">
+                            Favoris
+                        </a>
+                        </li>    
+                        @endif
 
+
+
+                    </ul>
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->

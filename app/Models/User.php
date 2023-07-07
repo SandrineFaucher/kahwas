@@ -87,4 +87,11 @@ class User extends Authenticatable
         //return $this->role == "admin";
         return $this->role_id == 2;
     }
+
+    public function isInFavorites(Article $article)
+    {
+        return $article->users()->where('user_id', $this->id)->exists();
+    }
+
+
 }

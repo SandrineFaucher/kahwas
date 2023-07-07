@@ -36,4 +36,6 @@ Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::clas
 
 
 //*****************Route pour les méthodes du Controller commandes****************************/
-Route::resource('/commandes', \App\Http\Controllers\CommandeController::class);
+Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->except('create', 'show', 'update', 'edit');
+
+
