@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Commande;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Article;
+
 
 class CommandeController extends Controller
 {
@@ -12,13 +16,21 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        //Récupérer les commandes pour les injecter dans une vue commande
-        $commandes = Commande::with('articles', 'user')
-        ->latest();
+        //Je récupère le user connecté dans une variable
+        $user = User::find(Auth::user()->id); 
 
-        return view('commandes.index', ['commandes' => $commandes]);
+        //je récupère les commandes de mon user connecté dans une variable 
+        $user->load('commandes');
 
-    }
+                      
+        // Autre façon pour récupérer la commande du user connecté
+        //$commandes = Commande::where('user_id', '=', Auth::user()->id)->get();
+   
+
+        //je retourne les commandes associées au user dans la vue commandes/index
+        return view('commandes.index', ['user' => $user]);
+
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -39,9 +51,16 @@ class CommandeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Commande $commande)
     {
-        //
+       //je charge les articles de la commande
+       //grace à Models/Commande qui lie cette table par la FK à la table articles
+        $commande->load('articles');
+
+        // je les retourne dans une page de détail et j'injecte les données de ma variable "$commande"
+        // avec la fonction compact('commande')
+        return view('commandes.detail', compact('commande'));
+        
     }
 
     /**

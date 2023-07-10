@@ -42,8 +42,13 @@
                         </a>
                         </li>    
                         @endif
-
-
+                        @if (Auth::user())
+                        <li>
+                        <a class="navbar-brand" href="{{ route('commandes.index') }}">
+                            Commandes
+                        </a>
+                        </li>    
+                        @endif
 
                     </ul>
                     

@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-//***********************Route d'affichage  de la page home*********************************/
+//***********************Route d'affichage  de la page home**********************************/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -35,7 +35,11 @@ Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
 Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');
 
 
-//*****************Route pour les méthodes du Controller commandes****************************/
+//*****************Route pour les méthodes du Controller favoris***************************/
 Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->except('create', 'show', 'update', 'edit');
+
+
+//****************Route pour la gestion des commandes et leur détail*************************/
+Route::resource('/commandes', \App\Http\Controllers\CommandeController::class,);
 
 

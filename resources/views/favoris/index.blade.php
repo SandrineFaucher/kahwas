@@ -49,11 +49,6 @@
                                 </form>
                             @endif
                         @endif
-
-
-
-
-
                         <form method="POST" action="{{ route('panier.add', $favori) }}" class="form-inline d-inline-block">
                             @csrf
                             <input type="number" name="quantite" placeholder="Quantité" class="form-control m-1">

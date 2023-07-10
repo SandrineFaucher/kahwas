@@ -2,46 +2,33 @@
 
 @section('content')
 
-<h1> Mes commandes </h1>
+<h1 class="text-center"> Mes commandes </h1>
 
-@foreach($commandes as $commande)
 
-<table class="table">
-    <thead>
+
+<div class="container-fluid p-5">
+@foreach($user->commandes as $commande)
+<div class="row">
+   <table class=" table table-bordered  p-5">
+    <thead class="text-center">
       <tr>
-        <th scope="col">Numéro de Commandes</th>
-        <th scope="col">Date de la création</th>
-        <th scope="col">Adresse de livraison</th>
-        <th scope="col">Adresse de facturation</th>
-        
-        <th scope="col">Détail de la commande</th>
-
+        <th scope="col">Numéro</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Date</th>
+        <th scope="col">Détails</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">{{$commande->numero}}</th>
+        <td>{{$commande->prix}} €</td>
+        <td>{{date('d/m/y', strtotime($commande->created_at))}}</td>
+        <td><a href="{{route('commandes.show', $commande)}}">Détail </a></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-@foreach
-
+    </table>
+  </div>
+  @endforeach
+</div>
 
 
 @endsection
