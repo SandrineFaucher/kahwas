@@ -44,15 +44,18 @@ Route::get('/article', function () {
 // les routes de la page Validation Panier
 
 Route::get('/validation', [App\Http\Controllers\PanierController::class, 'validation'])->name('validation')->middleware('auth');
-// "validation" pour afficher la page validation
-
-Route::post('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
-// "frais-de-port" pour afficher le formulaire frais de port
-
-
-
-
-
-
+// 'validation' pour afficher la page validation
 
 Route::resource('/user', App\Http\Controllers\UserController::class)->except('index', 'create', 'store');
+//valider les modifications d'informations personnelles
+
+Route::post('cart/validation', [App\Http\Controllers\PanierController::class, 'validation'])->name('cart.validation');
+// valider choix d'adresse de livraison ou de facturation
+
+Route::post('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
+// 'fraisdeport' pour afficher le formulaire frais de port
+
+Route::get('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
+// 'fraisdeport' pour afficher le formulaire frais de port
+
+

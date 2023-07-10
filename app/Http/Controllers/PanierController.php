@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Article;
+use App\Models\User;
+use App\Models\Adresse;
 
 class PanierController extends Controller
 {
@@ -70,40 +72,40 @@ class PanierController extends Controller
 	}
 
 
-	public function validation()
+	public function validation(Request $request)
 	{
-		$user = Auth::user(); //user connecté
-		return view("panier/validation", ['user'=>$user]);
+		$user = User::find(auth()->user()->id);
+
+		// si je viens de choisir une adresse de livraison 
+		if (($request->adresseLivraisonId)) {
+			$adresseLivraisonId = $request->adresseLivraisonId; // je stocke l'id de cette adresse choisie
+			$adresseLivraison = Adresse::findOrFail($adresseLivraisonId); // je récupère en bdd l'adresse correspondante
+			session(['adresseLivraison' => $adresseLivraison]); // je la stocke dans la session
+			// autre syntaxe : session()->put('adresseLivraison' => $adresseLivraison);
+		}
+
+		// si je viens de choisir une adresse de facturation => même principe 
+		if (($request->adresseFacturationId)) {
+			$adresseFacturationId = $request->input('adresseFacturationId');
+			$adresseFacturation = Adresse::findOrFail($adresseFacturationId);
+			session(['adresseFacturation' => $adresseFacturation]);
+		}
+
+		return view("panier/validation", ['user' => $user]);
 	}
+
 
 	public function fraisdeport(Request $request)
 	{
-		$fraisdeport= $request->input('fraisdeport');
-		session()->put('fraisdeport',$fraisdeport);
+		$fraisdeport = $request->input('fraisdeport');
+		session()->put('fraisdeport', $fraisdeport);
 		return back()->withMessage("Frais de port validés");
-
 	}
 
-
-	public function traiterFraisDePort(Request $request)
+	public function totalapayer(Request $request)
 	{
-		$fraisPort = $request->input('fraisdeport');
-
-		// Traitez les frais de port ici
-
-		return redirect('/fraisdeport')->with('success', 'Frais de port enregistrés avec succès !');
+		$totalapayer = $request->input('totalapayer');
+		session()->put('totalapayer', $totalapayer);
 	}
 
-	public function traiterCommande(Request $request)
-	{
-		// Récupérer les données du formulaire
-		$fraisPort = $request->input('frais_port');
-
-		// Calculer le total de la commande
-		$totalapayer = $this->calculerTotalCommande($request->all(), $fraisPort);
-
-		// Enregistrer la commande en base de données ou effectuer d'autres actions nécessaires
-
-		return redirect('/commande')->with('success', 'Commande enregistrée avec succès !');
-	}
 }

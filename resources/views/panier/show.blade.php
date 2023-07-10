@@ -7,10 +7,10 @@
         @endif
 
         @if (session()->has('panier'))
-            <h1>Mon panier</h1>
+            <h1 class="text-center m-5">Mon panier</h1>
             <div class="table-responsive shadow mb-3">
                 <table class="table table-bordered table-hover bg-white mb-0">
-                    <thead class="thead-dark">
+                    <thead class="tableau thead-dark">
                         <tr>
                             <th>#</th>
                             <th>Produit</th>
@@ -90,17 +90,24 @@
                 </table>
             </div>
 
-            <!-- Lien pour valider le panier -->
-            @if (Auth::user())
-                <a class="btn btn-primary" href="{{ route('validation') }}" title="Valider le panier">Valider</a>
-            @endif
-			
-            <!-- Lien pour vider le panier -->
-            <a class="btn btn-danger" href="{{ route('panier.empty') }}" title="Retirer tous les produits du panier">Vider
-                le panier</a>
-        @else
-            <div class="alert alert-info">Aucun produit au panier</div>
-        @endif
 
+            <!-- Boutons VALIDER/VIDER
+                                                     ============================================================ -->
+            <div class="d-flex justify-content-center">
+
+                <!-- Lien pour valider le panier -->
+                @if (Auth::user())
+                    <a class="btn btn-primary mx-3" href="{{ route('validation') }}" title="Valider le panier">Valider</a>
+                @endif
+
+                <!-- Lien pour vider le panier -->
+                <a class="btn btn-danger mx-3" href="{{ route('panier.empty') }}"
+                    title="Retirer tous les produits du panier">Vider
+                    le panier</a>
+            @else
+                <div class="alert alert-info">Aucun produit au panier</div>
+
+            </div>
+        @endif
     </div>
 @endsection

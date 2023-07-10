@@ -11,3 +11,10 @@
     background-color:#3f3028;
     color: white
 }
+
+
+/* ****************validation.blade.php*************** */
+
+.tableau, .card-header {
+    background-color:#ffb500 !important;
+}
