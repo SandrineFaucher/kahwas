@@ -18,7 +18,6 @@ class PanierController extends Controller
 		return view("panier.show"); // resources\views\panier\show.blade.php
 	}
 
-
 	# Ajout d'un produit au panier
 	public function add(Article $article, Request $request)
 	{
@@ -32,6 +31,7 @@ class PanierController extends Controller
 
 		// Les informations du produit à ajouter
 		$article_details = [
+			'id' => $article->id,
 			'nom' => $article->nom,
 			'prix' => $article->prix,
 			'quantite' => $request->quantite
@@ -40,6 +40,7 @@ class PanierController extends Controller
 		// si l'article est concerné par une promo ET si celle-ci est en cours => on prend en compte sa réduction
 		if ($campagneActuelle !== null) {
 			$article_details['campagne'] = $campagneActuelle;
+			$article_details['reduction'] = $campagneActuelle->reduction;
 		}
 
 		$panier[$article->id] = $article_details; // On ajoute ou on met à jour le produit au panier
@@ -71,6 +72,14 @@ class PanierController extends Controller
 		return back()->withMessage("Panier vidé");
 	}
 
+	public function emptyAfterOrder()
+	{
+		session()->forget('panier'); // On supprime le panier en session
+
+		// Redirection vers la page "home"
+		return redirect()->route ('home')->withMessage('success', 'Votre commande a été validée.');
+
+	}
 
 	public function validation(Request $request)
 	{
@@ -100,12 +109,6 @@ class PanierController extends Controller
 		$fraisdeport = $request->input('fraisdeport');
 		session()->put('fraisdeport', $fraisdeport);
 		return back()->withMessage("Frais de port validés");
-	}
-
-	public function totalapayer(Request $request)
-	{
-		$totalapayer = $request->input('totalapayer');
-		session()->put('totalapayer', $totalapayer);
 	}
 
 }

@@ -33,8 +33,10 @@ Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::clas
 Route::get('panier/remove/{article}', [App\Http\Controllers\PanierController::class, 'remove'])->name('panier.remove');
 //« panier.remove » pour retirer un produit du panier
 
+
 Route::get('panier/empty', [App\Http\Controllers\PanierController::class, 'empty'])->name('panier.empty');
 //« panier.empty » pour vider les produits du panier
+
 
 Route::get('/article', function () {
     return view('articles/article');
@@ -55,7 +57,13 @@ Route::post('cart/validation', [App\Http\Controllers\PanierController::class, 'v
 Route::post('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
 // 'fraisdeport' pour afficher le formulaire frais de port
 
-Route::get('validation/fraisdeport', [App\Http\Controllers\PanierController::class, 'fraisdeport'])->name('fraisdeport');
-// 'fraisdeport' pour afficher le formulaire frais de port
+Route::get('/emptyAfterOrder', [App\Http\Controllers\PanierController::class, 'emptyAfterOrder'])->name('emptyAfterOrder');
+// pour vider le panier après validation de la commande
 
 
+
+// les routes de la page Commandes
+
+Route::resource('/commandes', App\Http\Controllers\CommandeController::class)->except('create', 'store', 'edit', 'update','destroy');
+
+Route::get('/sauvegardeCommande', [App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');

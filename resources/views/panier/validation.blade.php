@@ -80,41 +80,41 @@
 
 
             <!-- Section MODIF/VALID INFOS
-                                                                    ============================================================ -->
+                                                ============================================================ -->
             <div class="container-fluid m-5">
                 <div class="row justify-content-center">
                     <div class="col-md-10">
 
 
                         <!-- Card
-                                                                                ============================================================ -->
+                                                     ============================================================ -->
                         <div class="card my-4">
 
 
                             <!-- Card header "S'inscrire"
-                                                                                    ============================================================ -->
+                                                            ============================================================ -->
                             <div class="card-header"><small>{{ __('Informations personnelles') }}</small></div>
 
 
                             <!-- Card body
-                                                                                    ============================================================ -->
+                                                        ============================================================ -->
                             <div class="card-body">
 
 
                                 <!-- Formulaire modif infos
-                                                                                        ============================================================ -->
+                                                                 ============================================================ -->
                                 <form method="POST" action="{{ route('user.update', $user) }}">
                                     @csrf
                                     @method('PUT')
 
 
                                     <!-- Section nom + prenom
-                                                                                            ============================================================ -->
+                                                                ============================================================ -->
                                     <div class="d-flex justify-content-center gap-2">
 
 
                                         <!-- Nom
-                                                                                                ============================================================ -->
+                                                                 ============================================================ -->
                                         <div class="col mb-3">
                                             <label for="nom"
                                                 class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
@@ -134,7 +134,7 @@
 
 
                                         <!-- Prenom
-                                                                                                ============================================================ -->
+                                                                ============================================================ -->
                                         <div class="col mb-3">
                                             <label for="prenom"
                                                 class="col-form-label ms-1"><small>{{ __('Prénom') }}</small></label>
@@ -158,7 +158,7 @@
 
 
                                     <!-- Email
-                                                                                            ============================================================ -->
+                                                                ============================================================ -->
                                     <div class="col mb-3">
                                         <label for="email"
                                             class="col-form-label ms-1"><small>{{ __('E-mail') }}</small></label>
@@ -178,7 +178,7 @@
 
 
                                     <!-- Boutton validation modification
-                                                                                            ============================================================ -->
+                                                                            ============================================================ -->
                                     <div class="row mb-0 mt-2">
                                         <div class="col-md-12">
                                             <button type="submit"
@@ -194,7 +194,7 @@
             </div>
 
 
-            <!-- ========================== Choisir adresse de livraison et de facturation ========================== -->
+            <!-- ======================================= Choisir adresse de livraison et de facturation ============================================ -->
 
             <h3 class="text-center p-3">Adresse de livraison</h3>
 
@@ -316,7 +316,7 @@
             </form>
 
 
-            <!-- Message de succès -->
+            <!-- ===================== Message de succès ========================= -->
 
             @if (session('success'))
                 <div class="alert alert-success">
@@ -329,7 +329,8 @@
             <!-- ============================================================== TOTAL A PAYER ============================================================ -->
 
             <!-- On incrémente le total à payer -->
-            @php $totalapayer = $total + session('fraisdeport') @endphp
+            @php $totalapayer = $total + session('fraisdeport');
+            session()->put('totalapayer', $totalapayer); @endphp
 
             <td>
                 <!-- On affiche le total à payer avec un arrondi de 2 chiffres après la virgule -->
@@ -339,7 +340,6 @@
 
 
             <!-- ===================================================== BOUTON VALIDER LA COMMANDE ===================================================== -->
-
 
             <div class="d-flex justify-content-center">
 
@@ -354,14 +354,8 @@
             </div>
 
 
+            <!-- =========================================================== MODAL =========================================================== -->
 
-
-
-
-
-
-
-            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -373,23 +367,28 @@
                         </div>
                         <div class="modal-body">
                             <p>Votre commande a été validée.</p>
-                            <!--Afficher le montant total du panier-->
+
+                            <!-- ================= Afficher le montant total du panier ===================== -->
+
                             <p> Le montant total est de <strong>{{ number_format($totalapayer, 2, ',', ' ') }} €</strong></p>
                             <p>Expédition à partir du <?php
+
                             // **** obtenir et afficher la date du jour formatée ****
+                            
                             $dateJour = date('d-m-Y');
                             echo $dateJour;
                             ?> </p>
                             <p>Livraison estimée le
                                 <?php
-                                // ********************* calcul : date du jour + 3 jours *****************
+                                
+                                // ********************* calcul : date du jour + 2 jours *****************
                                 
                                 // je récupère la date du jour en format DateTime (exigé par la fonction date_add)
                                 $date = new DateTime('now');
                                 
-                                // on utilise date_add pour ajouter 3 jours
+                                // on utilise date_add pour ajouter 2 jours
                                 // date_interval... => permet d'obtenir l'intervalle de temps souhaité pour l'ajouter
-                                date_add($date, date_interval_create_from_date_string('3 days'));
+                                date_add($date, date_interval_create_from_date_string('2 days'));
                                 
                                 // à ce stade, $date est directement modifiée
                                 // je l'affiche en la formatant : jour mois année => 09-06-2023
@@ -398,13 +397,16 @@
                             </p>
                             <p>Merci de votre confiance.</p>
                         </div>
+
+                        <!-- =========================== BOUTON RETOUR A L'ACCUEIL ======================== -->
                         <div class="modal-footer">
-                            <form method="POST" action="./index.blade.php">
-                                <button type="submit" name="commandeValidee" class="btn btn-primary">
+                            <a href="{{ route('commandes.store') }}">
+                                <button class="btn btn-primary">
                                     Retour à l'accueil
                                 </button>
-                            </form>
+                            </a>
                         </div>
+
                     </div>
                 </div>
             </div>

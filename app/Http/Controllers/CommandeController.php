@@ -29,59 +29,40 @@ class CommandeController extends Controller
 
 
         //je retourne les commandes associées au user dans la vue commandes/index
-        return view('commandes.index', ['user' => $user]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Commande $commande)
-    {
-  
+        // return view('commandes.index', ['user' => $user]);
     }
 
 
-    // Assuming this code is within a controller method
-public function placecommande(Request $request)
-{
-    // Step 1: Validation and calculation
-
-    // ... Perform validation and calculation of order details ...
-
-    // Step 2: Create and save the order
-
-    $commande = new Commande();
-    $commande->user()->associate(auth()->user());
-    $commande->total_amount = $totalapayer;
-    $commande->shipping_address_id = session('adresseLivraison')->id;
-    $commande->billing_address_id = session('adresseFacturation')->id;
-    $commande->save();
-
-    // Step 3: Save commande items
-
-    foreach (session('panier') as $position => $article) {
-        $commandeItem = new Commande();
-        $commandeItem->commande_id = $commande->id;
-        $commandeItem->product_id = $position;
-        $commandeItem->quantity = $article['quantite'];
-        $commandeItem->price = $article['prix'];
-        $commandeItem->save();
-    }
-
-    // Step 4: Update product stock (optional)
-
-    // ... Update product stock quantities based on the commande ...
-
-    // Step 5: Redirect or show success message
-
-    return redirect()->route('home')->with('success', 'Votre commande a été validée.');
-    /**
-     * Store a newly created resource in storage.
-     */
-}
     public function store(Request $request)
     {
-        //
+        // Créer et sauvegarder la commande
+
+        $commande = new Commande();
+        $commande->numero = rand(1000000,9999999);
+        $commande->prix = session('totalapayer');
+        $commande->user_id = Auth::user()->id;
+        $commande->adresse_livraison_id = session('adresseLivraison')->id;
+        $commande->adresse_facturation_id = session('adresseFacturation')->id;
+        $commande->save();
+
+        // Sauvegarder la commande articles
+
+          // je récupère le panier (stocké dans une variable), et je boucle dessus
+          $panier = session()->get("panier");
+
+          foreach ($panier as $article) {
+  
+              // j'insère chacun de ses articles dans commande_articles (syntaxe attach)
+              $commande->articles()->attach($article['id'], ['quantite' => $article['quantite'], 'reduction' => isset($article['reduction']) ? $article['reduction'] : 0]);
+          }
+
+        // Redirection et afficher message de succès
+
+        return redirect()->route('emptyAfterOrder');
+
+         /**
+         * Store a newly created resource in storage.
+         */
     }
 
     /**
@@ -96,30 +77,6 @@ public function placecommande(Request $request)
         // je les retourne dans une page de détail et j'injecte les données de ma variable "$commande"
         // avec la fonction compact('commande')
         return view('commandes.detail', compact('commande'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 
 }
