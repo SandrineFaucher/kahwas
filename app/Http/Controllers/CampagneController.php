@@ -37,7 +37,21 @@ class CampagneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom'=>'required|min:10|max:1000',
+            'reduction' => 'required|int|min:1|max:2',
+            'date_debut'=> 'required|date',
+            'date_fin' => 'required|date'
+        ]);
+
+        Campagne::create([
+            'nom'=> $request->nom,
+            'reduction' => $request->reduction,
+            'date_debut'=> $request->date_debut,
+            'date_fin' => $request->date_fin
+        ]);
+
+        return view('backoffice.index')->with('message', 'campagne crée avec succès');
     }
 
     /**

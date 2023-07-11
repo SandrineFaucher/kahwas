@@ -8,7 +8,7 @@
 
 <div class="container-fluid p-5">
 @foreach($user->commandes as $commande)
-<div class="row">
+<div class="row table-responsive shadow mb-3"">
    <table class=" table table-bordered  p-5">
     <thead class="text-center">
       <tr>

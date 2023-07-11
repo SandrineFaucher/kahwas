@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center"> Détail de la commande n° {{ $commande->numero }} </h1>
+    <h1 class="text-center"> Détail de la commande n° {{$commande->numero }} </h1>
 
     <p class="text-center pt-5 fs-3">Montant : <strong>{{($commande->prix)}} €</strong></p>
 
@@ -13,7 +13,9 @@
         {{ date('i', strtotime($commande->created_at)) }}</strong></p>
 
     <div class="container-fluid p-5">
-
+        @php
+        $totalsansfrais = 0;
+        @endphp
         @foreach ($commande->articles as $article)
             <div class="table-responsive shadow mb-3">
 
@@ -22,9 +24,11 @@
                         <tr>
                             <th scope="col">Article</th>
                             <th scope="col">Prix unitaire</th>
+                            <!--si le champ réduction de la table article n'est pas vide
+                            j'affiche cette réduction-->
                             @if(!empty($article->pivot->reduction))
                             <th scope="col">Réduction</th>
-                            <th scope="col">Prix remise</th>
+                            <th scope="col">Prix réduit</th>
                             @endif
                             <th scope="col">Description</th>
                             <th scope="col">Quantité</th>
@@ -35,24 +39,53 @@
                         <tr>
                             <th scope="row">{{ $article->nom }}</th>
                             <td>{{ $article->prix }} €</td>
+                            <!--si le champ réduction de la table article n'est pas vide
+                            j'affiche la réduction dans la colonne-->
                             @if (!empty($article->pivot->reduction))
                              <td>- {{ $article->pivot->reduction }} %</td>
-                             @php
-                                $prixremise = $article->prix - ($article->prix * $article->pivot->reduction) / 100;
-                             @endphp
                             @else
-                                <td>Aucune réduction</td>
+                            <td>Aucune réduction</td>
                             @endif
-                            <td>{{$prixremise}} €</td>
+                            <!--je calcule le prix de ma remise-->
+                            @php
+                            $prixremise = $article->prix - ($article->prix * $article->pivot->reduction) / 100;
+                            @endphp
+
+                            <!--si le champ réduction de la table article n'est pas vide
+                            j'affiche le prix réduit-->
+                            @if (!empty($article->pivot->reduction))
+                            <td>{{number_format($prixremise, 2, ',', ' ')}} €</td>
+                            @endif
                             <td>{{ $article->description }}</td>
                             <td>{{ $article->pivot->quantite }}</td>
+                            <!--si le champ réduction de la table article n'est pas vide
+                            j'affiche le prix réduit-->
+                            @php
+                            $total =( $prixremise * $article->pivot->quantite);
+                            @endphp
 
-                            <td>{{ ($article->prix * $article->pivot->quantite) - $prixremise }} €</td>
+                            @if (!empty($article->pivot->reduction))
+                            <td>{{(number_format($total, 2, ',', ' ')) }} €</td>
+                            @else
+                            <!--sinon j'affiche le prix sans réduction-->
+                            @php
+                            $total = $article->prix * ($article->pivot->quantite);
+                            @endphp
+                            <td>{{(number_format($total, 2, ',', ' '))}} €</td>
+                            @endif
+
                         </tr>
                 </table>
             </div>
 
-            <p class="text-center fs-3">Frais de port : </p>
+            @php
+            $totalsansfrais += $total;
+            @endphp
         @endforeach
+
+        <p class="text-center fs-3">Frais de port : 
+               {{number_format($commande->prix - $totalsansfrais, 2, ',' ,' ') }}€
+          
+        </p>
     </div>
 @endsection

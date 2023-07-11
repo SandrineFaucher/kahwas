@@ -49,7 +49,13 @@
                         </a>
                         </li>    
                         @endif
-
+                        
+                        <li>
+                            <a class="navbar-brand" href="{{ route('admin.index') }}">
+                                Back-office
+                            </a>
+                        </li>    
+                        
                     </ul>
                     
                     <!-- Right Side Of Navbar -->

@@ -35,11 +35,13 @@ Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
 Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');
 
 
-//*****************Route pour les méthodes du Controller favoris***************************/
+//*****************Route pour les méthodes du Controller favoris*****************************/
 Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->except('create', 'show', 'update', 'edit');
 
 
 //****************Route pour la gestion des commandes et leur détail*************************/
 Route::resource('/commandes', \App\Http\Controllers\CommandeController::class,);
 
+//*******************Route pour la gestion du back-office************************************/
+Route::resource('/admin', \App\Http\Controllers\AdminController::class)->except('create', 'show', 'edit', 'update', 'store', 'destroy');
 

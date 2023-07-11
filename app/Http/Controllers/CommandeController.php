@@ -53,9 +53,11 @@ class CommandeController extends Controller
      */
     public function show(Commande $commande)
     {
+       
        //je charge les articles de la commande
        //grace à Models/Commande qui lie cette table par la FK à la table articles
         $commande->load('articles');
+    
 
         // je les retourne dans une page de détail et j'injecte les données de ma variable "$commande"
         // avec la fonction compact('commande')
