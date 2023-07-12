@@ -10,19 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    <!--************ Fonts ******************-->
     <!-- cooper-black-std/june-expt-variable -->
     <link rel="stylesheet" href="https://use.typekit.net/uoa6tpn.css">
+    <!-- Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!--************ Scripts ************-->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+
+    <!--************ Icone ************-->
+    <script src="https://kit.fontawesome.com/1dd6859436.js" crossorigin="anonymous"></script>
+
+    <link rel="favicon" type="kahwas/public/favicon.png" href="./" />
+
 </head>
 
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="home#">
                     <img class="w-25" src="{{ asset('images/kahwas_logo.png') }}" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,10 +40,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -71,6 +75,24 @@
                                     </form>
                                 </div>
                             </li>
+                            <div class="row mx-auto">
+
+                                <div class="col"><a href="{{ route('articles.index') }}">
+                                        <button class="nav-link active" aria-current="catalogue">Catalogue</button></a>
+                                </div>
+                                <div class="col">
+                                    <a class="nav-link active" aria-current="gammes" href="{{ route ('gammes.index')}}">Gammes</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="nav-link active" aria-current="a_propos" href="./article.php">A propos</a>
+                                </div>
+                                <div class="col">
+                                    <a class="nav-link active" aria-current="panier" href="./article.php">Panier</a>
+                                </div>
+                                <div class="col">
+                                    <a class="nav-link active" aria-current="backoffice" href="{{ route('back.index')}}">Backoffice</a>
+                                </div>
+                            </div>
                         @endguest
                     </ul>
                 </div>
@@ -82,15 +104,62 @@
         </main>
     </div>
 </body>
-<footer class="text-center mx-auto bg-warning p-5">
-    <h5 class="ml-5 mr-5 text-light">Découvrez notre boutique en ligne dédiée aux amateurs de café :
-        une sélection exceptionnelle de machines à café et de grains fraîchement torréfiés pour une expérience caféinée
-        inégalée !
-    </h5>
-    <a class="navbar-brand" href="#">
-        <img class="w-15 p-2" src="{{ asset('images/kahwas_logo_light.png') }}" alt="Logo">
-    </a>
-    <h5 class="pt-4 text-light">© 2006 - 2023 - Reproduction interdite</h5>
+<footer class="bg-warning p-5 mx-auto">
+    <div class="row mx-auto">
+        <div class="col">
+            <div class="row mr-2 ml-2">
+                <div class="col">
+                    <ul>
+                        <li><b>Nous découvrir</b></li>
+                        <li>Qui Sommes nous ?</li>
+                        <li>Les marques Kahwas</li>
+                        <li>Index de l'égalité professionnelle</li>
+                        <li>Notre charte qualité</li>
+                        <li>Espace Presse</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li><b>Aide & Services</b></li>
+                        <li>Questions fréquentes</li>
+                        <li>Livraison</li>
+                        <li>Suivi de commande</li>
+                        <li>Mot de passe perdu</li>
+                        <li>SAV par marque</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li><b>Informations légales</b></li>
+                        <li>Gérer les cookies</li>
+                        <li>Protection des données</li>
+                        <li>Conditions générales de vente</li>
+                        <li>Notre charte qualité</li>
+                        <li>Mentions légales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col md-">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo_footer" src="{{ asset('images/kahwas_logo_light.png') }}" alt="Logo">
+                    </a>
+                </div>
+                <div class="col">
+                    <h5 class="text-light">Découvrez notre boutique en ligne dédiée aux amateurs de café :
+                        une sélection exceptionnelle de machines à café et de grains fraîchement torréfiés pour une
+                        expérience
+                        caféinée
+                        inégalée !
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="pt-4 text-light mx-auto text-center">© 2006 - 2023 - <b>Reproduction interdite</h5>
 </footer>
 
 </html>

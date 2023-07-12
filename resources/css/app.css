@@ -20,16 +20,141 @@ p,
 a
 font-family: "june-expt-variable",sans-serif;
     font-weight: 100;
-    font-variation-settings: 'STYL' 0;≤
+    font-variation-settings: 'STYL' 0;
 
 */
 
 
+body {
+    background-color: rgb(255, 247, 228);
+}
 
+.card_note {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #c389005c;
+}
 
+.note {
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    border-radius: 2em 2em 2em 2em;
+}
 
-h1 {
-    font-family: "cooper-black-std", serif;
+.card_promo {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #8f393972;
+
+}
+
+h1,
+h2 {
+    font-family: "june-expt-variable";
+    color: #3F3028;
+    font-weight: 400;
+}
+
+.h1_404 {
+    padding-bottom: 80px;
+    padding-top: 200px;
+    font-size: 32em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+h3,
+h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #3F3028;
+}
+
+.page_title {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_300428267.jpeg);
+    background-size: cover;
+    background-position-x: 75%;
+    background-position-y: 34%;
+}
+
+p,
+ul {
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-style: normal;
+    color: #3F3028;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.home_title {
+    font-size: 3em;
+}
+
+.font_promo {
+    font-family: "june-expt-variable";
+    color: white;
+}
+
+
+.star {
+    animation: rotate 5s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+.scroll {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2em;
+}
+
+.logo_footer {
+    height: 6em;
+}
+/* * * * * * droptdown * * * * */
+.droptdown_gamme{
+    color: white;
+    background-color: #3F3028;
+    margin-top: 2em;
+    border-style: none;
+    margin-left: 2em;
+}
+.dropdown-menu {
+    background-color: rgb(255, 251, 243);
+}
+
+/* * * * * * * media queries * * * * * */
+
+@media only screen and (max-width: 1031px) {
+
+    .h1_404 {
+        font-size: 24em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .h1_404 {
+        font-size: 15em;
+        padding-bottom: 155px;
+    }
 }
