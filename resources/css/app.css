@@ -47,6 +47,11 @@ body {
 
 }
 
+h1 {
+    font-size: 8em;
+    padding-top: 2em;
+}
+
 h1,
 h2 {
     font-family: "june-expt-variable";
@@ -79,8 +84,8 @@ h4 {
     padding-bottom: 1em;
     background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_300428267.jpeg);
     background-size: cover;
-    background-position-x: 75%;
-    background-position-y: 34%;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
 }
 
 p,
@@ -128,17 +133,34 @@ ul {
     margin-top: 2em;
 }
 
+ord-icon {
+    
+}
+
+
+/* * * * * * Footer * * * * */
 .logo_footer {
     height: 6em;
 }
+
+.presentation {
+    font-size: 1.5em;
+    padding: 1em;
+    border-block-end: 2px solid;
+    writing-mode: horizontal-tb;
+}
+
+/* * * * * * Backoffice * * * * */
+
 /* * * * * * droptdown * * * * */
-.droptdown_gamme{
+.droptdown_gamme {
     color: white;
     background-color: #3F3028;
     margin-top: 2em;
     border-style: none;
     margin-left: 2em;
 }
+
 .dropdown-menu {
     background-color: rgb(255, 251, 243);
 }
@@ -149,6 +171,13 @@ ul {
 
     .h1_404 {
         font-size: 24em;
+    }
+
+    .presentation {
+        font-size: 1em;
+        padding: 1em;
+        border-block-end: 2px solid;
+        writing-mode: horizontal-tb;
     }
 }
 

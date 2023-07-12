@@ -33,7 +33,7 @@ Route::resource('articles', App\Http\Controllers\ArticleController::class)->exce
 Route::resource('gammes', App\Http\Controllers\GammeController::class)->except('create');
 
 // ********** backoffice ***********
-Route::get('back', [app\Http\Controllers\AdminController::class])->name('back');
+Route::get('back', [App\Http\Controllers\AdminController::class,'index'])->name('back');
 
 
 // ********** 404 page ***********

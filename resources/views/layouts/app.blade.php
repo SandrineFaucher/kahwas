@@ -81,7 +81,8 @@
                                         <button class="nav-link active" aria-current="catalogue">Catalogue</button></a>
                                 </div>
                                 <div class="col">
-                                    <a class="nav-link active" aria-current="gammes" href="{{ route ('gammes.index')}}">Gammes</a>
+                                    <a class="nav-link active" aria-current="gammes"
+                                        href="{{ route('gammes.index') }}">Gammes</a>
                                 </div>
                                 <div class="col-md-2">
                                     <a class="nav-link active" aria-current="a_propos" href="./article.php">A propos</a>
@@ -90,7 +91,8 @@
                                     <a class="nav-link active" aria-current="panier" href="./article.php">Panier</a>
                                 </div>
                                 <div class="col">
-                                    <a class="nav-link active" aria-current="backoffice" href="{{ route('back.index')}}">Backoffice</a>
+                                    <a class="nav-link active" aria-current="backoffice"
+                                        href="{{ route('back') }}">Backoffice</a>
                                 </div>
                             </div>
                         @endguest
@@ -105,12 +107,12 @@
     </div>
 </body>
 <footer class="bg-warning p-5 mx-auto">
-    <div class="row mx-auto">
+    <div class="row mx-auto text-center">
         <div class="col">
             <div class="row mr-2 ml-2">
                 <div class="col">
-                    <ul>
-                        <li><b>Nous découvrir</b></li>
+                    <ul class="text-light">
+                        <li class="li_bold"><b>Nous découvrir</b></li>
                         <li>Qui Sommes nous ?</li>
                         <li>Les marques Kahwas</li>
                         <li>Index de l'égalité professionnelle</li>
@@ -119,8 +121,8 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <ul>
-                        <li><b>Aide & Services</b></li>
+                    <ul class="text-light">
+                        <li class="li_bold"><b>Aide & Services</b></li>
                         <li>Questions fréquentes</li>
                         <li>Livraison</li>
                         <li>Suivi de commande</li>
@@ -129,8 +131,8 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <ul>
-                        <li><b>Informations légales</b></li>
+                    <ul class="text-light">
+                        <li class="li_bold"><b>Informations légales</b></li>
                         <li>Gérer les cookies</li>
                         <li>Protection des données</li>
                         <li>Conditions générales de vente</li>
@@ -141,22 +143,16 @@
             </div>
         </div>
 
-        <div class="col">
-            <div class="row">
-                <div class="col md-">
-                    <a class="navbar-brand" href="#">
-                        <img class="logo_footer" src="{{ asset('images/kahwas_logo_light.png') }}" alt="Logo">
-                    </a>
-                </div>
-                <div class="col">
-                    <h5 class="text-light">Découvrez notre boutique en ligne dédiée aux amateurs de café :
-                        une sélection exceptionnelle de machines à café et de grains fraîchement torréfiés pour une
-                        expérience
-                        caféinée
-                        inégalée !
-                    </h5>
-                </div>
-            </div>
+        <div class="text-center mx-auto pt-4">
+            <a class="navbar-brand" href="home#">
+                <img class="logo_footer  text-center" src="{{ asset('images/kahwas_logo_light.png') }}" alt="Logo">
+            </a>
+            <p class="presentation text-light pt-4">Découvrez notre boutique en ligne dédiée aux amateurs de café :
+                une sélection exceptionnelle de machines à café et de grains fraîchement torréfiés pour une
+                expérience
+                caféinée
+                inégalée !
+            </p>
         </div>
     </div>
     <h5 class="pt-4 text-light mx-auto text-center">© 2006 - 2023 - <b>Reproduction interdite</h5>

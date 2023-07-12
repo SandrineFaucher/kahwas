@@ -7,7 +7,8 @@
 @section('content')
     <h1 class="page_title text-center mx-auto">Gammes</h1>
     <div class="btn-group dropup">
-        <button class="rounded-pill droptdown_gamme btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="rounded-pill droptdown_gamme btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Choisissez une gamme
         </button>
         <ul class="dropdown-menu">
@@ -17,7 +18,10 @@
         </ul>
     </div>
 
-
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+    <lord-icon src="https://cdn.lordicon.com/xsdtfyne.json" trigger="hover" colors="primary:#d6af8e"
+        style="width:75px;height:75px">
+    </lord-icon>
     {{-- * * * Titre * * * --}}
 
 
