@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-center">Mes articles Favoris</h1>
 
-
+    <div class="container-fluid d-flexjustify-content-center ">
     <div class="row text-center mt-5">
         @foreach ($user->favoris as $favori)
             <div class="col-md-3 p-2">
@@ -61,4 +61,5 @@
             </div>
         @endforeach
     </div>
+</div>
 @endsection
