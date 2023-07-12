@@ -11,10 +11,28 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Nunito" 
+    rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- cooper-black-std/june-expt-variable -->
+    <link rel="stylesheet" href="https://use.typekit.net/
+    uoa6tpn.css">
+                                                               
+    <!-- Roboto -->
+    <link href="https://fonts.googleapis.com/css2?
+    family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!--************ Scripts ************-->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 
+    'resources/css/app.css'])
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!--************ Icone ************-->
+    <script src="https://kit.fontawesome.com/1dd6859436.js"
+    crossorigin="anonymous"></script>
+
+    
 </head>
 <body>
     <div id="app">
@@ -51,7 +69,7 @@
                         @endif
                         
                         <li>
-                            <a class="navbar-brand" href="{{ route('admin.index') }}">
+                            <a class="navbar-brand" href="{{ route('admin') }}">
                                 Back-office
                             </a>
                         </li>    
@@ -98,6 +116,24 @@
         </nav>
 
         <main class="py-4">
+            <div class="container-fluid text-center">
+                @if (session()->has('message'))
+                    <p class="alert alert-success"> {{ session()->get('message') }} </p>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+
+
+
             @yield('content')
         </main>
     </div>

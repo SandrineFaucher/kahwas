@@ -43,5 +43,5 @@ Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->exce
 Route::resource('/commandes', \App\Http\Controllers\CommandeController::class,);
 
 //*******************Route pour la gestion du back-office************************************/
-Route::resource('/admin', \App\Http\Controllers\AdminController::class)->except('create', 'show', 'edit', 'update', 'store', 'destroy');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
