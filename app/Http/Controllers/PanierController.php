@@ -12,13 +12,16 @@ use App\Models\Adresse;
 class PanierController extends Controller
 {
 
-	# Affichage du panier
+	// ======================== Affichage du panier ========================= //
+
 	public function show()
 	{
 		return view("panier.show"); // resources\views\panier\show.blade.php
 	}
 
-	# Ajout d'un produit au panier
+
+	// ======================== Ajout d'un produit au panier ================ //
+
 	public function add(Article $article, Request $request)
 	{
 		// Validation de la requête
@@ -51,7 +54,8 @@ class PanierController extends Controller
 	}
 
 
-	// Suppression d'un produit du panier
+	// ============================ Suppression d'un produit du panier ========================= //
+
 	public function remove(Article $article)
 	{
 		$panier = session()->get("panier"); // On récupère le panier en session
@@ -63,7 +67,8 @@ class PanierController extends Controller
 	}
 
 
-	// Vider le panier
+	// ===================================== Vider le panier ================================== //
+
 	public function empty()
 	{
 		session()->forget("panier"); // On supprime le panier en session
@@ -72,14 +77,8 @@ class PanierController extends Controller
 		return back()->withMessage("Panier vidé");
 	}
 
-	public function emptyAfterOrder()
-	{
-		session()->forget('panier'); // On supprime le panier en session
 
-		// Redirection vers la page "home"
-		return redirect()->route ('home')->withMessage('success', 'Votre commande a été validée.');
-
-	}
+	// ================================ Validation d'une commande ============================= //
 
 	public function validation(Request $request)
 	{
@@ -103,6 +102,7 @@ class PanierController extends Controller
 		return view("panier/validation", ['user' => $user]);
 	}
 
+	// ============================== Validation des frais de port ============================ //
 
 	public function fraisdeport(Request $request)
 	{
@@ -111,4 +111,14 @@ class PanierController extends Controller
 		return back()->withMessage("Frais de port validés");
 	}
 
+
+	// ======================= Vider le panier après la validation d'une commande ================== //
+
+	public function emptyAfterOrder() //viderAprèsCommande
+	{
+		session()->forget('panier'); // On supprime le panier en session
+
+		// Redirection vers la page "home"
+		return redirect()->route('home')->withMessage('success', 'Votre commande a été validée.');
+	}
 }

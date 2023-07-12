@@ -10,7 +10,7 @@
             <h1 class="text-center m-5">Mon panier</h1>
             <div class="table-responsive shadow mb-3">
                 <table class="table table-bordered table-hover bg-white mb-0">
-                    <thead class="tableau thead-dark">
+                    <thead class="thead-dark">
                         <tr>
                             <th>#</th>
                             <th>Produit</th>
@@ -53,7 +53,7 @@
                                         <input type="number" name="quantite" placeholder="Quantité ?"
                                             value="{{ $article['quantite'] }}" class="form-control mr-2"
                                             style="width: 80px">
-                                        <input type="submit" class="actualiserQuantite btn" value="Actualiser" />
+                                        <input type="submit" class="btn ajoutValider" value="Actualiser" />
                                     </form>
                                 </td>
                                 <td>
@@ -97,7 +97,7 @@
 
                 <!-- Lien pour valider le panier -->
                 @if (Auth::user())
-                    <a class="btn btn-primary mx-3" href="{{ route('validation') }}" title="Valider le panier">Valider</a>
+                    <a class="btn ajoutValider mx-3" href="{{ route('validation') }}" title="Valider le panier">Valider</a>
                 @endif
 
                 <!-- Lien pour vider le panier -->

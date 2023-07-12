@@ -11,7 +11,7 @@
             <div class="table-responsive shadow mb-3">
                 <table class="table table-bordered table-hover bg-white mb-0">
                     <thead class="thead-dark">
-                        <tr class="tableau">
+                        <tr>
                             <th>#</th>
                             <th>Produit</th>
                             <th>Prix</th>
@@ -34,11 +34,11 @@
 
                                 <!-- si la clé campagne existe pour cet article, il est en promo actuellement -->
                                 @if (isset($article['campagne']))
-                                    <td>{{ $article['campagne']->nom }} :
-                                        -{{ $article['campagne']->reduction }}%
+                                    <td><span>{{ $article['campagne']->nom }} :
+                                        -{{ $article['campagne']->reduction }}%</span>
                                         <del>{{ $article['prix'] }} €</del>
                                         @php $prixremise = $article['prix']- ($article['prix'] * $article['campagne']->reduction / 100)@endphp
-                                        {{ number_format($prixremise, 2, ',', ' ') }}€
+                                        <span>{{ number_format($prixremise, 2, ',', ' ') }}€</span>
                                     </td>
                                 @else
                                     <td>{{ $article['prix'] }} €</td>
@@ -182,7 +182,7 @@
                                     <div class="row mb-0 mt-2">
                                         <div class="col-md-12">
                                             <button type="submit"
-                                                class="btn btn-primary col-12"><small>{{ __('Valider mes informations') }}</small></button>
+                                                class="btn ajoutValider col-12"><small>{{ __('Valider mes informations') }}</small></button>
                                         </div>
                                     </div>
 
@@ -232,7 +232,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="btn btn-warning">Sélectionner</button>
+                                <button type="submit" class="btn ajoutValider m-3">Sélectionner</button>
                             </div>
                         </form>
 
@@ -277,7 +277,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="btn btn-warning">Sélectionner</button>
+                                <button type="submit" class="btn ajoutValider m-3">Sélectionner</button>
                             </div>
                         </form>
                     @else
@@ -294,35 +294,27 @@
 
             <form action="{{ route('fraisdeport') }}" method="POST" class="text-center">
                 @csrf
-                @method('GET')
+                
 
                 <label for="fraisdeport">Type de livraison :</label>
                 <select name="fraisdeport" id="fraisdeport">
 
 
-                    <option value="5"@if (session('fraisdeport') && session()->get('fraisdeport') === 5) selected @endif>Classique, à
+                    <option value="5" @if (session('fraisdeport') && session()->get('fraisdeport') == 5) selected @endif>Classique, à
                         domicile (48h) : 5€</option>
 
 
-                    <option value="9.90"@if (session('fraisdeport') && session()->get('fraisdeport') === 9.9) selected @endif>Express, à
+                    <option value="9.90" @if (session('fraisdeport') && session()->get('fraisdeport') == 9.9) selected @endif>Express, à
                         domicile (24h) : 9.90€</option>
 
 
-                    <option value="4"@if (session('fraisdeport') && session()->get('fraisdeport') === 4) selected @endif>En point
+                    <option value="4" @if (session('fraisdeport') && session()->get('fraisdeport') == 4) selected @endif>En point
                         relais (48h) : 4€</option>
                 </select>
 
-                <button type="submit">Soumettre</button>
+                <button type="submit" class="btn ajoutValider m-3">Choisir</button>
             </form>
-
-
-            <!-- ===================== Message de succès ========================= -->
-
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+            
 
 
 
@@ -345,7 +337,7 @@
 
                 <!-- Button trigger modal -->
                 @if (session('adresseLivraison') !== null && session('adresseFacturation') !== null && session('fraisdeport') !== null)
-                <button type="submit" name="clearCart" class="btn btn-primary" data-bs-toggle="modal"
+                <button type="submit" name="clearCart" class="btn validerCommande m-3" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     Valider la commande
                 </button>
@@ -401,7 +393,7 @@
                         <!-- =========================== BOUTON RETOUR A L'ACCUEIL ======================== -->
                         <div class="modal-footer">
                             <a href="{{ route('commandes.store') }}">
-                                <button class="btn btn-primary">
+                                <button class="btn validerCommande m-3">
                                     Retour à l'accueil
                                 </button>
                             </a>

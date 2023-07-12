@@ -6,3 +6,61 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+/*
+couleurs:
+#FFB200 - orange
+#3F3028 - marron
+#A34A23 - terracotta
+
+typographie:*/
+
+body {
+    background-color: rgb(255, 247, 228);
+}
+
+h1 {
+    font-family: "june-expt-variable";
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-variation-settings: 'STYL' 0;
+}
+
+span {
+    color:red;
+    font-weight:bold;
+}
+
+/* ****************article.blade.php*************** */
+
+.ajoutValider {
+    background-color: #ffb500;
+    color: white;
+}
+
+
+/* ****************validation.blade.php*************** */
+
+.card-header {
+    background-color: #3F3028;
+    color: white;
+}
+
+.validerCommande {
+    background-color: #3F3028;
+    color: white;
+}
+
+
+
