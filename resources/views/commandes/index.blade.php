@@ -3,7 +3,7 @@
 @section('content')
 
 <!--TITRE PAGE-->
-    <h1 class="text-center"> Mes commandes </h1>
+<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Mes commandes</span>
 
 
     <!--BOUCLE SUR LES COMMANDES DU USER CONNECTE DANS UN TABLEAU-->
