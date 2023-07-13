@@ -1,17 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <!--TITRE DE PAGE : NUMERO DE LA COMMANDE-->
     <h1 class="text-center"> Détail de la commande n° {{$commande->numero }} </h1>
 
+    <!--MONTANT-->
     <p class="text-center pt-5 fs-3">Montant : <strong>{{($commande->prix)}} €</strong></p>
 
 
-
+    <!--DATES DE COMMANDE-->
     <p class="text-center pt-3 fs-3">Date : <strong>
         {{ date('d/m/y', strtotime($commande->created_at)) }} à
         {{ date('H', strtotime($commande->created_at)) }}h
         {{ date('i', strtotime($commande->created_at)) }}</strong></p>
 
+
+    <!--CONDITIONS D AFFICHAGE EN FONCTION DE L EXISTENCE DE REDUCTIONS-->  
     <div class="container-fluid p-5">
         @php
         $totalsansfrais = 0;

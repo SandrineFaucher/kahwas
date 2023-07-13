@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!--TITRE PAGE-->
     <h1 class="text-center"> Mes commandes </h1>
 
 
-
+    <!--BOUCLE SUR LES COMMANDES DU USER CONNECTE DANS UN TABLEAU-->
     <div class="container-fluid p-5">
         @foreach ($user->commandes as $commande)
             <div class="row table-responsive shadow mb-3"">
@@ -22,8 +24,12 @@
                             <th scope="row">{{ $commande->numero }}</th>
                             <td>{{ $commande->prix }} €</td>
                             <td>{{ date('d/m/y', strtotime($commande->created_at)) }}</td>
-                            <td><a class="link-offset-2 link-underline link-underline-opacity-0"
-                                    href="{{ route('commandes.show', $commande) }}">Détail </a><i
+                            <td>
+                                <!--BOUTON DU DETAIL DE LA COMMANDE-->
+                                <a class="link-offset-2 link-underline link-underline-opacity-0"
+                                    href="{{ route('commandes.show', $commande) }}">
+                                    Détail 
+                                </a><i
                                     class="fa-solid fa-magnifying-glass"></i></td>
                         </tr>
                 </table>
