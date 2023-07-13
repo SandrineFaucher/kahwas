@@ -8,7 +8,7 @@
 
     <!-- SECTION MODIF ARTICLE
     ============================================================ -->
-    <div class="container-fluid mt-5" id="section_modif_article">
+    <div class="container-fluid pt-5" id="section_modif_article">
         <!-- Titre section -->
         <h2 class="text-center">Modifier l'article {{ $article->nom }}</h2>
         <div class="row justify-content-center">
@@ -17,22 +17,25 @@
 
                 <!-- CARD
                 ============================================================ -->
-                <div class="card border-secondary mt-1">
+                <div class="card border-secondary text-light mt-1">
 
 
                     <!-- CARD HEADER
                     ============================================================ -->
-                    <div class="card-header border-bottom border-secondary d-flex justify-content-between">
+                    <div class="card-header border-bottom border-secondary d-flex justify-content-between" id="header_card_edit">
+
                         <small>{{ __('Modification article') }} {{ $article->nom }}</small>
+
                         <a href="{{ route('backoffice') }}">
-                            <i class="fa-solid fa-xmark text-dark fs-5"></i>
+                            <i class="fa-solid fa-xmark text-light fs-5"></i>
                         </a>
+
                     </div>
 
 
                     <!-- CARD BODY
                     ============================================================ -->
-                    <div class="card-body">
+                    <div class="card-body" id="body_card_edit">
 
 
                         <!-- FORMULAIRE CREATION ARTICLE

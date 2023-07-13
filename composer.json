@@ -28,7 +28,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/UploadImage.php"
+            "app/Helpers/UploadImage.php",
+            "app/Helpers/GetCampagne.php"
         ]
     },
     "autoload-dev": {
@@ -36,7 +37,8 @@
             "Tests\\": "tests/"
         }, 
         "files": [
-            "app/Helpers/UploadImage.php"
+            "app/Helpers/UploadImage.php",
+            "app/Helpers/GetCampagne.php"
         ]
     },
     "scripts": {

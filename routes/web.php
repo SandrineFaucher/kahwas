@@ -54,3 +54,6 @@ Route::resource('/adresse', App\Http\Controllers\AdresseController::class)->exce
 // Route “BACKOFFICE“
 Route::get('/backoffice', [App\Http\Controllers\AdminController::class, 'index'])->name('backoffice');
 
+
+
+Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');

@@ -19,17 +19,17 @@
 
                     <!-- CARD
                     ============================================================ -->
-                    <div class="card border-secondary mt-1">
+                    <div class="card border-secondary text-light mt-1">
 
 
                         <!-- CARD HEADER
                         ============================================================ -->
-                        <div class="card-header border-bottom border-secondary"><small>{{ __('Enregistrer un article') }}</small></div>
+                        <div class="card-header border-bottom border-secondary" id="header_card_index"><small>{{ __('Enregistrer un article') }}</small></div>
 
 
                         <!-- CARD BODY
                         ============================================================ -->
-                        <div class="card-body">
+                        <div class="card-body" id="body_card_index">
 
 
                             <!-- FORMULAIRE CREATION ARTICLE
@@ -200,7 +200,7 @@
                                 ============================================================ -->
                                 <div class="row mt-4">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn col-12 border-secondary"><small class="text-light">{{ __('Enregistrer') }}</small></button>
+                                        <button type="submit" class="btn col-12 border-secondary" id="button_validation_enregistrement"><small class="text-light">{{ __('Enregistrer') }}</small></button>
                                     </div>
                                 </div>
 
@@ -283,7 +283,7 @@
                                             <form action="{{ route('articles.destroy', $article) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                                <button type="submit" class="btn btn-danger border-0 btn-light">Supprimer</button>
+                                                <button type="submit" class="btn btn-danger border-0">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
