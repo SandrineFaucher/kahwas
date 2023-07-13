@@ -178,7 +178,7 @@
                                     </div>
 
 
-                                    <!-- Boutton validation modification
+                                    <!-- Bouton validation modification
                                                                                 ============================================================ -->
                                     <div class="row mb-0 mt-2">
                                         <div class="col-md-12">
@@ -405,7 +405,7 @@
                         </div>
 
                         
-                        <!-- =========================== BOUTON RETOUR A L'ACCUEIL ======================== -->
+                        <!-- ========================================== BOUTON RETOUR A L'ACCUEIL =============================================== -->
                         
                         <div class="modal-footer d-flex justify-content-center">
                             <a href="{{ route('commandes.store') }}">
