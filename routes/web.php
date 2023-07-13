@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
 
 Auth::routes();
 
@@ -45,3 +46,37 @@ Route::resource('/commandes', \App\Http\Controllers\CommandeController::class,);
 //*******************Route pour la gestion du back-office************************************/
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('admin');
 
+// Route  "HOME"
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route  "/"
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route  "USER"
+Route::resource('/user', App\Http\Controllers\UserController::class)->except('index', 'create', 'store');
+Route::put('/user/updatepassword/{user}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('updatepassword');
+
+
+// Route “ARTICLES“  --> RESOURCE 
+Route::resource('/articles', App\Http\Controllers\ArticleController::class);
+
+
+
+// Route “TOPARTICLE“  --> GET
+Route::get('/toparticles', [App\Http\Controllers\ArticleController::class, 'topArticles'])->name('toparticles');
+
+
+
+// Route  "ADRESSE"
+Route::resource('/adresse', App\Http\Controllers\AdresseController::class)->except('index', 'create', 'edit');
+
+
+
+// Route “BACKOFFICE“
+Route::get('/backoffice', [App\Http\Controllers\AdminController::class, 'index'])->name('backoffice');
+
+
+
+Route::post('panier/add/{article}', [App\Http\Controllers\PanierController::class, 'add'])->name('panier.add');

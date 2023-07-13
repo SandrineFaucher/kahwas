@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Campagne;
 use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Gamme;
 
 class AdminController extends Controller
 {
@@ -16,15 +17,15 @@ class AdminController extends Controller
     {
         $campagnes = Campagne::all();
         $articles = Article::all();
+        $gammes = Gamme::All();
 
 
         return view('backoffice.index', [
-            'campagnes' => $campagnes,
-            'articles' => $articles
-        ] );
+            'campagnes'     => $campagnes,
+            'articles'      => $articles,
+            'gammes'        => $gammes,
+        ]);
+
     }
 
-    
-    
-   
 }

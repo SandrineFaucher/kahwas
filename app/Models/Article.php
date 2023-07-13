@@ -22,6 +22,7 @@ class Article extends Model
         'image',
         'prix',
         'stock',
+        'note',
     ];
 
      //nom au singulier car un article peut être associé qu'à une seule gamme

@@ -1,77 +1,153 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+    <!-- CONTAINER
+    ============================================================ -->
+    <div class="container-fluid" id="register_blade" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0)), url(../images/image_fond_formulaire.jpeg);">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                <!-- CARD
+                ============================================================ -->
+                <div class="card text-light border-secondary mt-5" id="register_blade_card">
+
+
+                    <!-- CARD HEADER
+                    ============================================================ -->
+                    <div class="card-header border-bottom border-secondary"><small>{{ __('Inscription') }}</small></div>
+
+
+                    <!-- CARD BODY
+                    ============================================================ -->
+                    <div class="card-body">
+
+
+                        <!-- FORMULAIRE INSCRIPTION
+                        ============================================================ -->
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+
+
+                            <!-- SECTION NOM + PRENOM
+                            ============================================================ -->
+                            <div class="d-flex justify-content-center gap-2">
+
+
+                                <!-- NOM
+                                ============================================================ -->
+                                <div class="col mb-3">
+                                    <label for="nom" class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="nom" type="text" placeholder="Nom" class="form-control @error('name') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="on" autofocus>
+
+                                        @error('nom')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <!-- PRENOM
+                                ============================================================ -->
+                                <div class="col mb-3">
+                                    <label for="prenom" class="col-form-label ms-1"><small>{{ __('Prénom') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="prenom" type="text" placeholder="Prénom" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="on" autofocus>
+
+                                        @error('prenom')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <!-- EMAIL
+                            ============================================================ -->
+                            <div class="col mb-3">
+                                <label for="email" class="col-form-label ms-1"><small>{{ __('Adresse e-mail') }}</small></label>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-12">
+                                    <input id="email" type="email" placeholder="Adresse e-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="on" autofocus>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <!-- SECTION MOT DE PASSE
+                            ============================================================ -->
+                            <div class="d-flex justify-content-center gap-2">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
+                                <!-- MOT DE PASSE
+                                ============================================================ -->
+                                <div class="col mb-3">
+                                    <label for="password" class="col-form-label ms-1"><small>{{ __('Mot de passe') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="password" type="password" placeholder="Mot de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off" autofocus>
+                                        <div id="emailHelp" class="form-text text-light ms-1">8 et 15 caracteres. minimum 1 lettre, 1 chiffre et 1 caractère spécial</div>
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <!-- CONFIRMATION MOT DE PASSE 
+                                ============================================================ -->
+                                <div class="col mb-3">
+                                    <label for="password-confirm" class="col-form-label ms-1"><small>{{ __('Confirmez mot de passe') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="password-confirm" type="password" placeholder="Confirmez mot de passe" class="form-control" name="password_confirmation" required autocomplete="off">
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <!-- BOUTTON VALIDATION INSCRIPTION
+                            ============================================================ -->
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn col-12 border-secondary"><small class="text-light">{{ __('S\'inscrire') }}</small></button>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+
+                        </form>
+
+
+                    </div>
+
+
                 </div>
+
+
             </div>
         </div>
     </div>
-</div>
+
+
 @endsection

@@ -27,15 +27,17 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files" :[
+        "files": [
+            "app/Helpers/UploadImage.php",
             "app/Helpers/GetCampagne.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        },
-        "files" :[
+        }, 
+        "files": [
+            "app/Helpers/UploadImage.php",
             "app/Helpers/GetCampagne.php"
         ]
     },
