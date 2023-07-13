@@ -111,4 +111,5 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('admin.index')->with('message', 'L\'article a bien été supprimé');
     }
+    
 }

@@ -18,15 +18,14 @@
         </ul>
     </div>
 
-    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-    <lord-icon src="https://cdn.lordicon.com/xsdtfyne.json" trigger="hover" colors="primary:#d6af8e"
-        style="width:75px;height:75px">
-    </lord-icon>
+
+
+
     {{-- * * * Titre * * * --}}
 
 
     @foreach ($gammes as $gamme)
-        <h2 id="{{ $gamme->nom }}" class="text-center mx-auto p-4">{{ $gamme->nom }}</h2>
+        <h2 id="{{ $gamme->nom }}" class="title_gamme text-center mx-auto">{{ $gamme->nom }}</h2>
 
         <div class="row w-75 mx-auto">
             @foreach ($gamme->articles as $article)
@@ -41,18 +40,33 @@
                                     <p class="card-text">{{ $article->description }}</p>
                                 </div>
                                 <div class="col text-center">
-                                    <p>{{ $article->prix }} €</p>
+                                    <p class="text-decoration-line-through">{{ $article->prix }} €</p>
+                                    @php
+                                        $prixremise = $article->prix - ($article->prix * $promoActuelle->reduction) / 100; //remise sur article promo
+                                    @endphp
+                                    <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }} €</p>
                                 </div>
-                                {{-- Ajout pannier --}}
-                                {{-- <form method="POST" action="{{ route('panier.add', 1) }}"
-                                            class="form-inline d-inline-block">
-                                            {{ csrf_field() }}
-                                            <input type="number" name="quantite" placeholder="Quantité ?"
-                                                class="form-control mr-2">
-                                            {{-- value="{{ isset(session('panier')[$article->id]) ? session('panier')[$article->id]['quantite'] : null }}"> --}}
-                                {{-- <!-- value = afficher la quantité du produit s'il se trouve au panier--> --}}
 
-                                <!-- <button type="submit" class="ajoutPanier btn">+ Ajouter au panier</button> </form>-->
+
+
+
+
+                                {{-- <form method="POST" action="{{ route('panier.add', 1) }}"
+                                    class="form-inline d-inline-block">
+                                    {{ csrf_field() }} --}}
+                                <input type="number" name="quantite" placeholder="Quantité ?" class="form-control mr-2">
+                                <div class="row p-3">
+                                    <div class="col">
+                                        <button type="submit" class="ajoutValider btn btn-danger">Ajouter au panier</button>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{{ route('articles.show', $article) }}" class="m-1">
+                                            <button class="btn btn-dark validerCommande">Détails produit</button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>

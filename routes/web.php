@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,14 +35,15 @@ Route::resource('articles', App\Http\Controllers\ArticleController::class)->exce
 Route::resource('gammes', App\Http\Controllers\GammeController::class)->except('create');
 
 // ********** backoffice ***********
-Route::get('back', [App\Http\Controllers\AdminController::class,'index'])->name('back');
 
+Route::get('back', [AdminController::class, 'index'])->name('back');
 
-// ********** 404 page ***********
 
 // Les autres routes avant
+// ********** 404 page ***********
 
 // Méthode fallback() en dernière position
 Route::fallback(function () {
     return view('404'); // la vue 404.blade.php
 });
+

@@ -57,42 +57,51 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
                             <div class="row mx-auto">
 
-                                <div class="col"><a href="{{ route('articles.index') }}">
-                                        <button class="nav-link active" aria-current="catalogue">Catalogue</button></a>
+                                <div class="col">
+                                    <a class="nav-link active" aria-current="articles"
+                                        href="{{ route('articles.index') }}">Catalogue</a>
                                 </div>
                                 <div class="col">
                                     <a class="nav-link active" aria-current="gammes"
                                         href="{{ route('gammes.index') }}">Gammes</a>
                                 </div>
-                                <div class="col-md-2">
-                                    <a class="nav-link active" aria-current="a_propos" href="./article.php">A propos</a>
+                                <div class="col">
+                                    <a class="nav-link active" aria-current="gammes"
+                                        href="{{ route('gammes.index') }}">Promotions</a>
                                 </div>
                                 <div class="col">
                                     <a class="nav-link active" aria-current="panier" href="./article.php">Panier</a>
                                 </div>
                                 <div class="col">
+                                    <a class="nav-link active" aria-current="panier" href="./article.php">Favoris</a>
+                                </div>
+                                <div class="col">
                                     <a class="nav-link active" aria-current="backoffice"
-                                        href="{{ route('back') }}">Backoffice</a>
+                                        href="{{ route('back') }}">Backoffice
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
                                 </div>
                             </div>
                         @endguest
@@ -101,7 +110,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="container-fluid text-center mt-5">
+            @if (session()->has('message'))
+                <p class="alert alert-success">{{ session()->get('message') }}</p>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
+
+        <main>
             @yield('content')
         </main>
     </div>
@@ -145,7 +170,8 @@
 
         <div class="text-center mx-auto pt-4">
             <a class="navbar-brand" href="home#">
-                <img class="logo_footer  text-center" src="{{ asset('images/kahwas_logo_light.png') }}" alt="Logo">
+                <img class="logo_footer  text-center" src="{{ asset('images/kahwas_logo_light.png') }}"
+                    alt="Logo">
             </a>
             <p class="presentation text-light pt-4">Découvrez notre boutique en ligne dédiée aux amateurs de café :
                 une sélection exceptionnelle de machines à café et de grains fraîchement torréfiés pour une

@@ -23,34 +23,34 @@ font-family: "june-expt-variable",sans-serif;
     font-variation-settings: 'STYL' 0;
 
 */
-
+header {
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/background_h1.png);
+}
 
 body {
     background-color: rgb(255, 247, 228);
 }
 
-.card_note {
-    background-color: rgb(255, 252, 245);
-    box-shadow: 0px 2px 10px 2px #c389005c;
-}
-
-.note {
-    font-size: 2em;
-    color: black;
-    background-color: white;
-    border-radius: 2em 2em 2em 2em;
-}
-
-.card_promo {
-    background-color: rgb(255, 252, 245);
-    box-shadow: 0px 2px 10px 2px #8f393972;
-
-}
+/* * * * * * Font * * * * */
 
 h1 {
     font-size: 8em;
-    padding-top: 2em;
+    padding-top: 1em;
 }
+
+.base_line_h1 {
+    font-family: "cooper-black-std", serif;
+    text-transform: uppercase;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_297716501.gif);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-position-y: 40em;
+    background-position-x: -23em;
+
+}
+
 
 h1,
 h2 {
@@ -77,6 +77,8 @@ h4 {
     color: #3F3028;
 }
 
+/* * * * * * Title h1 * * * * */
+
 .page_title {
     font-size: 8em;
     color: white;
@@ -88,8 +90,25 @@ h4 {
     background-attachment: fixed;
 }
 
+.page_title_catalogue {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_184849661.jpeg);
+    background-size: cover;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
+
+}
+
+.title_gamme {
+    padding: 2em;
+}
+
 p,
-ul {
+ul,
+label {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -112,6 +131,35 @@ ul {
 }
 
 
+/* * * * * * Card * * * * */
+
+.card_note {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #c389005c;
+}
+
+.card_promo {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #8f393972;
+
+}
+
+.note {
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    border-radius: 2em 2em 2em 2em;
+}
+
+.style_prix {
+    border-style: dotted;
+    color: rgba(240, 228, 201, 0.191);
+    border-radius: 1em;
+}
+
+
+/* * * * * * Icone animee * * * * */
+
 .star {
     animation: rotate 5s infinite;
 }
@@ -131,10 +179,6 @@ ul {
     justify-content: center;
     align-items: flex-start;
     margin-top: 2em;
-}
-
-ord-icon {
-    
 }
 
 

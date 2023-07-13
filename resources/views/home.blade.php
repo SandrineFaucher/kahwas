@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+    <header>
+        <div class="base_line">
+            <h1 class="base_line_h1 text-center">Kahwas shop</h1>
+            <h2 class="text-center pb-5">vous propose des machines d'exception pour une expérience caféinée
+                inégalée!</h2>
+        </div>
+    </header>
 
     <body>
         {{-- carrousel --}}
-
-        <div id="carouselExample" class="carousel slide pt-5">
+        <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{ asset('images/4_carousel_sage.png') }}" class="d-block w-100" alt="sage">
@@ -71,24 +77,32 @@
                                         <div class="col-md-9">
                                             <p class="card-text">{{ $article->description }}</p>
                                         </div>
-                                        <div class="col text-center">
-                                            <p class="text-decoration-line-through">{{ $article->prix }} €</p>
+                                        <div class="style_prix col text-center">
+                                            <p class=" text-decoration-line-through">{{ $article->prix }} €</p>
                                             @php
                                                 $prixremise = $article->prix - ($article->prix * $promoActuelle->reduction) / 100; //remise sur article promo
                                             @endphp
                                             <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }} €</p>
                                         </div>
                                         {{-- Ajout pannier --}}
-                                        {{-- <form method="POST" action="{{ route('panier.add', 1) }}"
-                                            class="form-inline d-inline-block">
+                                        <form {{-- method="POST" action="{{ route('panier.add', 1) }}" --}} class="form-inline d-inline-block m-3">
                                             {{ csrf_field() }}
                                             <input type="number" name="quantite" placeholder="Quantité ?"
                                                 class="form-control mr-2">
-                                            {{-- value="{{ isset(session('panier')[$article->id]) ? session('panier')[$article->id]['quantite'] : null }}"> --}}
-                                        {{-- <!-- value = afficher la quantité du produit s'il se trouve au panier--> --}}
-
-                                        <!-- <button type="submit" class="ajoutPanier btn">+ Ajouter au panier</button>
-                                                                                    </form>-->
+                                            {{ isset(session('panier')[$article->id]) ? session('panier')[$article->id]['quantite'] : null }}
+                                            <!-- value = afficher la quantité du produit s'il se trouve au panier-->
+                                        </form>
+                                        <div class="row text-center">
+                                            <div class="col-md-8 mr-5">
+                                                <button type="submit" class="ajoutPanier btn btn-danger  mt-2">Ajouter au
+                                                    panier</button>
+                                            </div>
+                                            <div class="col ml-5">
+                                                <a href="{{ route('articles.show', $article) }}">
+                                                    <button class="btn validerCommande">Détails produit</button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,18 +130,16 @@
                         <div class="card_note card p-3 mb-5 rounded-4">
                             <img class="image_note rounded-1" src="{{ asset('images/' . $article->image) }}"
                                 alt="Image de l'article">
+                            <p class="btn btn-light position-absolute buttom rounded-pill m-2">
+                                {{ $article->note }} <i class="star fa-solid fa-star" style="color: #fec700;"></i>
+                            </p>
                             <div class="card-body">
-
-                                <p class="btn btn-light position-absolute top-50 rounded-pill">
-                                    {{ $article->note }} <i class="star fa-solid fa-star" style="color: #fec700;"></i>
-                                </p>
-
                                 <h3 class="card-title text-center mb-3">{{ $article->nom }}</h3>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <p class="card-text">{{ $article->description }}</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="style_prix col">
 
                                         @php
                                             $campaign = getCampaign($article->id);
@@ -145,14 +157,33 @@
                                         @else
                                             <p>{{ $article->prix }} €</p>
                                         @endif
-
                                     </div>
+                                </div>
+                            </div>
+                            <form {{-- method="POST" action="{{ route('panier.add', 1) }}" --}} class="form-inline d-inline-block m-3">
+                                {{ csrf_field() }}
+                                <input type="number" name="quantite" placeholder="Quantité ?"
+                                    class="form-control mr-2">
+                                {{ isset(session('panier')[$article->id]) ? session('panier')[$article->id]['quantite'] : null }}
+                                <!-- value = afficher la quantité du produit s'il se trouve au panier-->
+                            </form>
+                            <div class="row text-center">
+                                <div class="col-md-8 mr-5">
+                                    <button type="submit" class="ajoutPanier btn btn-danger  mt-2">Ajouter au
+                                        panier</button>
+                                </div>
+                                <div class="col ml-5">
+                                    <a href="{{ route('articles.show', $article) }}">
+                                        <button class="btn validerCommande">Détails produit</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+
+
         </div>
     </body>
 @endsection
