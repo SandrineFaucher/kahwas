@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
 <!--TITRE PAGE-->
-<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Articles favoris</span>
+<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Articles favoris</span></h1>
 
     <!--AFFICHAGE DES ARTICCLES FAVORIS-->
     <div class="container-fluid d-flexjustify-content-center ">
@@ -46,7 +46,7 @@
                     <!--BOUTONS : detail, retirer des favoris, ajout au panier-->
                     <div class="card-body ">
                         <a href="#" class="card-link">
-                            <button type="button" class="btn btn-outline-secondary btn-sm">
+                            <button type="button" class="btn btn-outline-secondary ">
                                 Détail de l'article
                             </button>
                         </a>
@@ -59,7 +59,7 @@
                                 <form method="post" action="{{ route('favoris.destroy', $favori->id) }}">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-outline-secondary btn-sm m-2">Retirer des favoris</button>
+                                    <button type="submit" class="btn btn-outline-secondary  m-2">Retirer des favoris</button>
                                 </form>
                             @endif
                         @endif
@@ -68,7 +68,7 @@
                         <form method="POST" action="{{ route('panier.add', $favori) }}" class="form-inline d-inline-block">
                             @csrf
                             <input type="number" name="quantite" placeholder="Quantité" class="form-control m-1">
-                            <button type="submit" class="btn btn-outline-secondary btn-sm">
+                            <button type="submit" class="btn btn-outline-secondary">
                                 + Ajouter au panier
                             </button>
                         </form>

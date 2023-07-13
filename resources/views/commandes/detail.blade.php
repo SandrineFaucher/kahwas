@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
     <!--TITRE DE PAGE : NUMERO DE LA COMMANDE-->
-    <h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Détail de la commande n°{{$commande->numero }}</span>  </h1>
-
+    <h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Détail de la commande </span> </h1>
+    <p class="text-center pt-5 fs-1" >n° {{$commande->numero }} </p>
     <!--MONTANT-->
     <p class="text-center pt-5 fs-3">Montant : <strong>{{($commande->prix)}} €</strong></p>
 

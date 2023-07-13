@@ -1,17 +1,17 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
 <!--TITRE PAGE-->
-<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Campagnes en cours</span>
+<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Campagnes en cours</span></h1>
 
     <!--BOUCLE QUI AFFICHE LES CAMPAGNES-->
     @foreach ($campagnes as $campagne)
         <div class="container-fluid text-center mt-5">
 
             <!--NOM-->
-            <h2 class="card-title mt-4">
-                {{ $campagne->nom }}
+            <h2 class="card-title mt-4 ">
+                <span class="fs-2">{{ $campagne->nom }}</span>
             </h2>
 
             <!--DATES-->
@@ -37,20 +37,20 @@
 
                                 <!--DESCRIPTION-->
                                 <div>
-                                    <p class="card-text fw-bold fs-3 text-center border-bottom rounded">{{ $article->nom }}</p>
-                                    <p class="card-text fs-4">{{ $article->description }}</p>
+                                    <p class="card-text fw-bold fs-4 text-center border-bottom rounded">{{ $article->nom }}</p>
+                                    <p class="card-text fs-5">{{ $article->description }}</p>
                                 </div>
 
                                 <!--REDUCTION-->
-                                <p class="text-danger">{{ $campagne->reduction }}%</p>
+                                <p class="text-danger mt-3">{{ $campagne->reduction }}%</p>
 
                                 <!--AFFICHAGE PRIX + CALCUL PRIX REMISE-->
-                                <div class="text-center d-flex justify-content-evenly">
-                                    <p class="text-decoration-line-through">{{ $article->prix }}€</p>
+                                <div class="text-center ">
+                                    <p class="text-decoration-line-through fs-5">{{ $article->prix }}€</p>
                                     @php
                                         $prixremise = $article->prix - ($article->prix * $campagne->reduction) / 100;
                                     @endphp
-                                    <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }}€</p>
+                                    <p class="text-danger fs-5">{{ number_format($prixremise, 2, ',', ' ') }}€</p>
                                 </div>
 
                                 <!--BOUTON DU DETAIL-->
