@@ -12,12 +12,12 @@
                 <table class="table table-bordered table-hover bg-white mb-0">
                     <thead class="thead-dark">
                         <tr>
-                            <th>#</th>
-                            <th>Produit</th>
-                            <th>Prix</th>
-                            <th>Quantité</th>
-                            <th>Total</th>
-                            <th>Opérations</th>
+                            <th style="background-color: #3F3028;color: white">#</th>
+                            <th style="background-color: #3F3028;color: white">Produit</th>
+                            <th style="background-color: #3F3028;color: white">Prix</th>
+                            <th style="background-color: #3F3028;color: white">Quantité</th>
+                            <th style="background-color: #3F3028;color: white">Total</th>
+                            <th style="background-color: #3F3028;color: white">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,17 +29,17 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{-- <strong><a href="{{ route('article.show', $position) }}" title="Afficher le produit" >{{ $article['nom'] }}</a></strong> --}}
                                     {{ $article['nom'] }}
                                 </td>
 
-                                <!-- si la clé campagne existe pour cet article, il est en promo actuellement -->
+                                <!--  PRIX = si la clé campagne existe pour cet article, j'affiche le nom de la promo + % réduction + prix barré + prix promo -->
+                                
                                 @if (isset($article['campagne']))
-                                    <td>{{ $article['campagne']->nom }} :
-                                        -{{ $article['campagne']->reduction }}%
+                                    <td><span>{{ $article['campagne']->nom }} :
+                                        -{{ $article['campagne']->reduction }}%</span>
                                         <del>{{ $article['prix'] }} €</del>
                                         @php $prixremise = $article['prix']- ($article['prix'] * $article['campagne']->reduction / 100)@endphp
-                                        {{ number_format($prixremise, 2, ',', ' ') }}€
+                                       <span> {{ number_format($prixremise, 2, ',', ' ') }}€</span>
                                     </td>
                                 @else
                                     <td>{{ $article['prix'] }} €</td>
@@ -56,6 +56,7 @@
                                         <input type="submit" class="btn ajoutValider" value="Actualiser" />
                                     </form>
                                 </td>
+
                                 <td>
                                     <!-- Le total du produit = prix * quantité -->
                                     @if (isset($article['campagne']))
@@ -64,8 +65,9 @@
                                         {{ number_format($article['prix'] * $article['quantite'], 2, ',', ' ') }}€
                                     @endif
                                 </td>
+
                                 <td>
-                                    <!-- Le Lien pour retirer un produit du panier -->
+                                    <!-- Le lien pour retirer un produit du panier -->
                                     <a href="{{ route('panier.remove', $position) }}" class="btn btn-outline-danger"
                                         title="Retirer le produit du panier">Retirer</a>
                                 </td>
@@ -78,6 +80,7 @@
                                 @php $total += $article['prix'] * $article['quantite'] @endphp
                             @endif
                         @endforeach
+
                         <tr colspan="2">
                             <td colspan="4">Total général</td>
                             <td colspan="2">
@@ -91,8 +94,8 @@
             </div>
 
 
-            <!-- Boutons VALIDER/VIDER
-                                                     ============================================================ -->
+            <!-- ==================================================== Boutons VALIDER/VIDER ============================================== -->
+                                                    
             <div class="d-flex justify-content-center">
 
                 <!-- Lien pour valider le panier -->

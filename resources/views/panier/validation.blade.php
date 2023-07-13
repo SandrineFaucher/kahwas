@@ -12,11 +12,11 @@
                 <table class="table table-bordered table-hover bg-white mb-0">
                     <thead class="thead-dark">
                         <tr>
-                            <th>#</th>
-                            <th>Produit</th>
-                            <th>Prix</th>
-                            <th>Quantité</th>
-                            <th>Total</th>
+                            <th style="background-color: #3F3028;color: white">#</th>
+                            <th style="background-color: #3F3028;color: white">Produit</th>
+                            <th style="background-color: #3F3028;color: white">Prix</th>
+                            <th style="background-color: #3F3028;color: white">Quantité</th>
+                            <th style="background-color: #3F3028;color: white">Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,24 +28,25 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{-- <strong><a href="{{ route('article.show', $position) }}" title="Afficher le produit" >{{ $article['nom'] }}</a></strong> --}}
                                     {{ $article['nom'] }}
                                 </td>
 
                                 <!-- si la clé campagne existe pour cet article, il est en promo actuellement -->
                                 @if (isset($article['campagne']))
                                     <td><span>{{ $article['campagne']->nom }} :
-                                        -{{ $article['campagne']->reduction }}%</span>
+                                            -{{ $article['campagne']->reduction }}%</span>
                                         <del>{{ $article['prix'] }} €</del>
                                         @php $prixremise = $article['prix']- ($article['prix'] * $article['campagne']->reduction / 100)@endphp
                                         <span>{{ number_format($prixremise, 2, ',', ' ') }}€</span>
                                     </td>
                                 @else
                                     <td>{{ $article['prix'] }} €</td>
+                                    <!--afficher le prix-->
                                 @endif
 
                                 <td>
                                     {{ $article['quantite'] }}
+                                    <!--afficher la quantité-->
                                 </td>
 
                                 <td>
@@ -80,41 +81,41 @@
 
 
             <!-- Section MODIF/VALID INFOS
-                                                ============================================================ -->
+                                                    ============================================================ -->
             <div class="container-fluid m-5">
                 <div class="row justify-content-center">
                     <div class="col-md-10">
 
 
                         <!-- Card
-                                                     ============================================================ -->
+                                                         ============================================================ -->
                         <div class="card my-4">
 
 
                             <!-- Card header "S'inscrire"
-                                                            ============================================================ -->
+                                                                ============================================================ -->
                             <div class="card-header"><small>{{ __('Informations personnelles') }}</small></div>
 
 
                             <!-- Card body
-                                                        ============================================================ -->
+                                                            ============================================================ -->
                             <div class="card-body">
 
 
                                 <!-- Formulaire modif infos
-                                                                 ============================================================ -->
+                                                                     ============================================================ -->
                                 <form method="POST" action="{{ route('user.update', $user) }}">
                                     @csrf
                                     @method('PUT')
 
 
                                     <!-- Section nom + prenom
-                                                                ============================================================ -->
+                                                                    ============================================================ -->
                                     <div class="d-flex justify-content-center gap-2">
 
 
                                         <!-- Nom
-                                                                 ============================================================ -->
+                                                                     ============================================================ -->
                                         <div class="col mb-3">
                                             <label for="nom"
                                                 class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
@@ -134,7 +135,7 @@
 
 
                                         <!-- Prenom
-                                                                ============================================================ -->
+                                                                    ============================================================ -->
                                         <div class="col mb-3">
                                             <label for="prenom"
                                                 class="col-form-label ms-1"><small>{{ __('Prénom') }}</small></label>
@@ -158,7 +159,7 @@
 
 
                                     <!-- Email
-                                                                ============================================================ -->
+                                                                    ============================================================ -->
                                     <div class="col mb-3">
                                         <label for="email"
                                             class="col-form-label ms-1"><small>{{ __('E-mail') }}</small></label>
@@ -178,7 +179,7 @@
 
 
                                     <!-- Boutton validation modification
-                                                                            ============================================================ -->
+                                                                                ============================================================ -->
                                     <div class="row mb-0 mt-2">
                                         <div class="col-md-12">
                                             <button type="submit"
@@ -196,10 +197,13 @@
 
             <!-- ======================================= Choisir adresse de livraison et de facturation ============================================ -->
 
-            <h3 class="text-center p-3">Adresse de livraison</h3>
+
+            <!-- Adresse de Livraison -->
+
+            <h2 class="text-center p-3">Adresse de livraison</h2>
 
             <div class="row pb-3">
-                <div class="col-6 offset-3 text-center border border-info pb-3">
+                <div class="col-6 offset-3 text-center border pb-3">
 
                     <!-- affichage de l'adresse choisie -->
 
@@ -239,16 +243,22 @@
                         <!-- si le user n'a pas enregistré d'adresses -->
                     @else
                         <p class="rounded m-auto m-5 pt-4 p-3 bg-danger text-white">Vous n'avez aucune adresse enregistrée.
-                            Ajoutez-en une dans l'espace client.
+                            Ajoutez-en une dans l'espace client.</p>
                     @endif
 
                 </div>
             </div>
 
-            <h3 class="text-center p-3">Adresse de facturation</h3>
+
+
+            <!-- Adresse de facturation -->
+
+            <h2 class="text-center p-3">Adresse de facturation</h2>
 
             <div class="row pb-3">
-                <div class="col-6 offset-3 text-center border border-info pb-3">
+                <div class="col-6 offset-3 text-center border pb-3">
+
+                    <!-- affichage de l'adresse choisie -->
 
                     @if (session('adresseFacturation') !== null)
                         @php $adresseFacturation = session('adresseFacturation') @endphp
@@ -261,6 +271,8 @@
                     @else
                         <p class="mt-4">Aucune adresse choisie.</p>
                     @endif
+
+                    <!-- si le user a enregistré des adresses, je lui propose le choix -->
 
                     @if (count($user->adresses) > 0)
                         <form action="{{ route('cart.validation') }}" class="p-3" method="post">
@@ -280,9 +292,11 @@
                                 <button type="submit" class="btn ajoutValider m-3">Sélectionner</button>
                             </div>
                         </form>
+
+                        <!-- si le user n'a pas enregistré d'adresses -->
                     @else
                         <p class="rounded m-auto m-5 pt-4 p-3 bg-danger text-white">Vous n'avez aucune adresse enregistrée.
-                            Ajoutez-en une dans l'espace client.
+                            Ajoutez-en une dans l'espace client.</p>
                     @endif
 
                 </div>
@@ -294,7 +308,6 @@
 
             <form action="{{ route('fraisdeport') }}" method="POST" class="text-center">
                 @csrf
-                
 
                 <label for="fraisdeport">Type de livraison :</label>
                 <select name="fraisdeport" id="fraisdeport">
@@ -314,7 +327,6 @@
 
                 <button type="submit" class="btn ajoutValider m-3">Choisir</button>
             </form>
-            
 
 
 
@@ -326,8 +338,9 @@
 
             <td>
                 <!-- On affiche le total à payer avec un arrondi de 2 chiffres après la virgule -->
-                <div class="text-center m-5">Total à payer :<strong>{{ number_format($totalapayer, 2, ',', ' ') }} €</strong></div>
-                
+                <div class="text-center m-5">Total à payer :<strong>{{ number_format($totalapayer, 2, ',', ' ') }}
+                        €</strong></div>
+
             </td>
 
 
@@ -337,10 +350,10 @@
 
                 <!-- Button trigger modal -->
                 @if (session('adresseLivraison') !== null && session('adresseFacturation') !== null && session('fraisdeport') !== null)
-                <button type="submit" name="clearCart" class="btn validerCommande m-3" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    Valider la commande
-                </button>
+                    <button type="submit" name="clearCart" class="btn validerCommande m-3" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Valider la commande
+                    </button>
                 @endif
 
             </div>
@@ -353,8 +366,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content text-center">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5 mx-auto text-center" id="exampleModalLabel">Félicitations !</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Félicitations !</h1>
+                            <button type="button" class="btn-close m-0" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -362,10 +375,11 @@
 
                             <!-- ================= Afficher le montant total du panier ===================== -->
 
-                            <p> Le montant total est de <strong>{{ number_format($totalapayer, 2, ',', ' ') }} €</strong></p>
+                            <p> Le montant total est de <strong>{{ number_format($totalapayer, 2, ',', ' ') }} €</strong>
+                            </p>
                             <p>Expédition à partir du <?php
-
-                            // **** obtenir et afficher la date du jour formatée ****
+                            
+                            // ===================  obtenir et afficher la date du jour formatée ===============
                             
                             $dateJour = date('d-m-Y');
                             echo $dateJour;
@@ -373,7 +387,7 @@
                             <p>Livraison estimée le
                                 <?php
                                 
-                                // ********************* calcul : date du jour + 2 jours *****************
+                                // ========================== calcul : date du jour + 2 jours ==================
                                 
                                 // je récupère la date du jour en format DateTime (exigé par la fonction date_add)
                                 $date = new DateTime('now');
@@ -390,8 +404,10 @@
                             <p>Merci de votre confiance.</p>
                         </div>
 
+                        
                         <!-- =========================== BOUTON RETOUR A L'ACCUEIL ======================== -->
-                        <div class="modal-footer">
+                        
+                        <div class="modal-footer d-flex justify-content-center">
                             <a href="{{ route('commandes.store') }}">
                                 <button class="btn validerCommande m-3">
                                     Retour à l'accueil

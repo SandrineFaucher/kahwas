@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\User;
 use App\Models\Adresse;
+use Illuminate\Support\Facades\Gate;
 
 class PanierController extends Controller
 {
@@ -16,8 +17,10 @@ class PanierController extends Controller
 
 	public function show()
 	{
+		
 		return view("panier.show"); // resources\views\panier\show.blade.php
 	}
+
 
 
 	// ======================== Ajout d'un produit au panier ================ //
@@ -82,6 +85,11 @@ class PanierController extends Controller
 
 	public function validation(Request $request)
 	{
+
+		if (Gate::denies("access_order_validation")){
+			abort(403, 'Vous n\'êtes pas connecté');
+		}
+
 		$user = User::find(auth()->user()->id);
 
 		// si je viens de choisir une adresse de livraison 

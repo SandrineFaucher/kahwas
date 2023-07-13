@@ -24,6 +24,7 @@ h1 {
     font-family: "june-expt-variable";
     font-weight: 400;
     font-style: normal;
+    color: #A34A23;
 }
 
 h2,
@@ -37,10 +38,21 @@ a {
     font-variation-settings: 'STYL' 0;
 }
 
+h2 {
+    color: #ffb500;
+}
+
+h3 {
+    color: #A34A23;
+}
+
+
+
 span {
     color:red;
     font-weight:bold;
 }
+
 
 /* ****************article.blade.php*************** */
 
@@ -62,5 +74,13 @@ span {
     color: white;
 }
 
+.modal-title{
+    margin-left: 40%;
+}
+
+.border {
+    border-color: #A34A23 !important;
+    
+}
 
 

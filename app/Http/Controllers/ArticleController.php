@@ -37,7 +37,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         // on charge les campagnes via un eager loading
-        $article->load('campagnes');
+        $article->campagne=getCampaign($article->id);
+
 
         // on charge les avis via un eager loading
         $article->load('avis');
