@@ -1,0 +1,248 @@
+/* edit.blade  --> USER
+================================================================ */
+h1 {
+    font-size: 8em;
+    padding-top: 2em;
+}
+
+h1,
+h2 {
+    font-family: "june-expt-variable";
+    color: #3F3028;
+    }
+
+h3,
+h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #3F3028;
+}
+
+p,
+ul {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #3F3028;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* EMAIL.BLADE.PHP --> VIEWS/PASSWORD
+================================================================ */
+#email_blade {
+    height: 100vh; 
+    width:100%; 
+    background-size: cover; 
+    background-position: center;
+}
+
+#email_blade #email_blade_card {
+    background-color: #ffb7003e; 
+    backdrop-filter: blur(7px); 
+    box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.945); 
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.926);
+}
+
+#email_blade #email_blade_card button {
+    background-color: #3f3028cf; 
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
+}
+
+
+/* EDIT.BLADE.PHP --> VIEWS/ARTICLES
+================================================================ */
+#section_modif_article button {
+    background-color: #3f3028cf;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
+}
+
+
+
+
+
+
+
+
+
+
+/* LOGIN.BLADE.PHP --> VIEWS/AUTH
+================================================================ */
+#login_blade {
+    height: 100vh;
+    width:100%;
+    background-size: cover;
+    background-position: center;
+}
+
+#login_blade #login_blade_card {
+    background-color: #ffb7003e;
+    backdrop-filter: blur(7px);
+    box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.945);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.926),
+}
+
+#login_blade #login_blade_card button {
+    background-color: #3f3028cf;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
+}
+
+
+
+
+
+
+
+
+
+
+/* REGISTER.BLADE.PHP --> VIEWS/AUTH
+================================================================ */
+#register_blade {
+    height: 100vh;
+    width:100%;
+    background-size: cover;
+    background-position: center;
+}
+
+#register_blade #register_blade_card {
+    background-color: #ffb7003e;
+    backdrop-filter: blur(7px);
+    box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.945);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.926);
+}
+
+#register_blade #register_blade_card input {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.782)
+}
+
+#register_blade #register_blade_card button {
+    background-color: #3f3028cf;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
+}
+
+
+
+
+
+
+
+
+
+
+/* TOPARTICLES.BLADE.PHP --> VIEWS/ARTICLES
+================================================================ */
+#section_top_articles {
+    background-color: #fef7e4;
+}
+
+#section_top_articles #card_top_artciles {
+    box-shadow: 1.5px 3px 7px rgba(0, 0, 0, 0.827);
+    background-color: #fdfcf5;
+}
+
+#section_top_articles #card_top_artciles img {
+    box-shadow: 0.5px 2px 5px black;
+}
+
+#section_top_articles #card_top_artciles #first_paragraphe {
+    text-shadow: 1px 1px 1px black;
+    background-color: rgba(0, 0, 0, 0.056);
+    box-shadow: 1px 2px 2px black;
+}
+
+#section_top_articles #card_top_artciles #second_paragraphe {
+    text-shadow: 0px 0px 1px black;
+    right: 9px;
+    background-color: rgba(255, 238, 0, 0.705);
+    box-shadow: 1px 2px 2px black;
+}
+
+#section_top_articles #card_top_artciles .card-body {
+    height: 10rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#section_top_articles #card_top_artciles .card-body div {
+    max-height: 100%;
+}
+
+#section_top_articles #card_top_artciles .card-body div p:first-child {
+    background-color: #f6f5ee;
+    box-shadow: 0.5px 1px 6px black;
+}
+
+
+
+
+
+
+
+
+
+
+/* INDEX.BLADE.PHP --> VIEWS/BACKOFFICE
+================================================================ */
+#section_cration_article {
+    background-color: #fef7e4;
+}
+
+#section_cration_article button {
+    background-color: #3f3028cf;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
+}
+
+#section_gestion_articles {
+    overflow-y: scroll; height: 50rem;
+}
+
+#section_gestion_articles td {
+    background-color: #35363a;
+    color: azure;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+#section_gestion_articles th {
+    background-color: #202124;
+    color: azure;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+#section_gestion_articles #button_modif {
+    background-color: #3f3028cf;
+}
+
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES
+================================================================ */
+
+/* 850px */
+@media screen and ( max-width: 850px ) {
+
+    /* Formualaire infos-mdp edit.blade  -->  view/user */
+    #edit_blade_formulaire_infos_mdp {
+        flex-direction: column;
+    }
+}
