@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 use App\Models\Article;
 use App\Models\User;
 use App\Models\Adresse;
@@ -129,4 +127,6 @@ class PanierController extends Controller
 		// Redirection vers la page "home"
 		return redirect()->route('home')->withMessage('success', 'Votre commande a été validée.');
 	}
+
+
 }

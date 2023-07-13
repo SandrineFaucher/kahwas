@@ -7,8 +7,6 @@ use App\Models\Commande;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Article;
-
 
 class CommandeController extends Controller
 {
@@ -29,7 +27,7 @@ class CommandeController extends Controller
 
 
         //je retourne les commandes associées au user dans la vue commandes/index
-        // return view('commandes.index', ['user' => $user]);
+        return view('commandes.index', ['user' => $user]);
     }
 
 
@@ -60,10 +58,8 @@ class CommandeController extends Controller
 
         return redirect()->route('emptyAfterOrder');
 
-         /**
-         * Store a newly created resource in storage.
-         */
-    }
+    } 
+
 
     /**
      * Display the specified resource.
@@ -73,7 +69,7 @@ class CommandeController extends Controller
         //je charge les articles de la commande
         //grace à Models/Commande qui lie cette table par la FK à la table articles
         $commande->load('articles');
-
+    
         // je les retourne dans une page de détail et j'injecte les données de ma variable "$commande"
         // avec la fonction compact('commande')
         return view('commandes.detail', compact('commande'));

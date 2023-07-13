@@ -22,6 +22,7 @@ class Article extends Model
         'image',
         'prix',
         'stock',
+        'note',
     ];
 
      //nom au singulier car un article peut être associé qu'à une seule gamme
@@ -33,11 +34,12 @@ class Article extends Model
 
      //nom au pluriel car plusieurs articles peuvent être mis dans les favoris
     // cardinalité 0,n
-    public function favoris()
+    public function users()
     {
         return $this->belongsToMany(User::class,'favoris');
-    }
 
+    }
+    
     //nom au pluriel car plusieurs articles peuvent avoir un avis
     // cardinalité 0,n
     public function avis()

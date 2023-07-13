@@ -1,73 +1,116 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    <!-- Container
+    ============================================================ -->
+    <div class="container-fluid" id="login_blade" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0)), url(../images/image_fond_formulaire.jpeg);">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                <!-- Card
+                ============================================================ -->
+                <div class="card text-light border-secondary mt-5" id="login_blade_card">
+
+
+                    <!-- Card header "Connexion"
+                    ============================================================ -->
+                    <div class="card-header"><small>{{ __('Connexion') }}</small></div>
+
+
+                    <!-- Card body
+                    ============================================================ -->
+                    <div class="card-body">
+
+
+                        <!-- Formulaire inscription
+                        ============================================================ -->
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
+
+                            <!-- Section nom + prenom
+                            ============================================================ -->
+                            <div class="d-flex justify-content-center gap-2">
+
+
+                                <!-- Adresse email + checkbox "se souvenir de moi"
+                                ============================================================ -->
+                                <div class="col mb-3">
+
+                                    <!-- email -->
+                                    <label for="email" class="col-form-label ms-1"><small>{{ __('Adresse e-mail') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="email" type="email" placeholder="Adresse e-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- checkbox -->
+                                    <div class="form-check mt-2 ms-1">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="remember"><small>{{ __('Se souvenir de moi') }}</small></label>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Mot de passe + lien "mot de passe oublié ?"
+                                ============================================================ -->
+                                <div class="col mb-3">
+
+                                    <!-- mot de passe -->
+                                    <label for="password" class="col-form-label ms-1"><small>{{ __('Mot de passe') }}</small></label>
+
+                                    <div class="col-md-12">
+                                        <input id="password" type="password" placeholder="Mot de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- lien --> 
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link p-0 mt-2 ms-1 text-light" href="{{ route('password.request') }}"><small>{{ __('Mot de passe oublié ?') }}</small></a>
+                                    @endif
+
+                                </div>
+
+
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                            <!-- Boutton connexion
+                            ============================================================ -->
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn col-12 border-secondary"><small class="text-light">{{ __('Connexion') }}</small></button>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+
+
+                    </div>
+
+
                 </div>
+
+
             </div>
         </div>
     </div>
-</div>
+
+
 @endsection
