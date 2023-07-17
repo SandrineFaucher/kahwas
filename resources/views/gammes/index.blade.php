@@ -6,6 +6,8 @@
 
 @section('content')
     <h1 class="page_title text-center mx-auto">Gammes</h1>
+
+    
     <div class="btn-group dropup">
         <button class="rounded-pill droptdown_gamme btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -47,44 +49,64 @@
                                     <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }} €</p>
                                 </div>
 
-                                <div class="row text-center">
-                                    <form method="POST" action="{{ route('panier.add', $article) }}"
-                                        class="form-inline d-inline-block">
-                                        @csrf
-                                        <input value="1" type="number" name="quantite" placeholder="Quantité"
-                                            class="form-control m-1">
-                                        <div class="col ml-5">
-                                            <button type="submit" class="btn btn-warning m-1">Ajouter au
-                                                panier</button>
+                                <!-- boutton ajout au panier -->
+                                <div class="container text-center">
+                                    <div class="row text-center mt-1">
+                                        <div class="col-md-12">
+                                            <form method="POST" action="{{ route('panier.add', 1) }}"
+                                                class="form-inline d-inline-block">
+                                                {{ csrf_field() }}
+
+                                                <input value="1" type="number" name="quantite"
+                                                    placeholder="Quantité ?" class="form-control mr-2">
+                                            </form>
                                         </div>
-                                    </form>
-                                    <div class="col ml-5">
-                                        <a href="{{ route('articles.show', $article) }}">
-                                            <button class="btn validerCommande">Détails produit</button>
-                                        </a>
-                                    </div>
-                                    @if (Auth::user())
-                                        <!-- si le produit est déjà dans les favoris-->
-                                        @if (Auth::user()->isInFavorites($article))
-                                            <!-- si dans les favoris-->
-                                            <form method="post" action="{{ route('favoris.destroy', $article->id) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger m-2">Retirer
-                                                    des
-                                                    favoris</button>
+
+                                        <div class="col-md-12">
+                                            @if (Auth::user())
+                                                <!-- si le produit est déjà dans les favoris-->
+                                                @if (Auth::user()->isInFavorites($article))
+                                                    <!-- si dans les favoris-->
+                                                    <form method="post"
+                                                        action="{{ route('favoris.destroy', $article->id) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger m-2">Retirer
+                                                            des
+                                                            favoris</button>
+
+                                                    </form>
+                                                @else
+                                                    <!-- si le produit n'est pas dans les favoris-->
+                                                    <form method="post" action="{{ route('favoris.store') }}">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $article->id }}" name="articleId">
+                                                        <button type="submit" class="btn btn-outline-secondary m-2">Ajouter
+                                                            aux
+                                                            favoris</button>
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        </div>
+
+                                        <div class="col">
+
+                                            <form method="POST" action="{{ route('panier.add', 1) }}"
+                                                class="form-inline d-inline-block">
+                                                {{ csrf_field() }}
+
+                                                <button type="submit" class="ajoutValider btn">Ajouter au panier</button>
 
                                             </form>
-                                        @else
-                                            <!-- si le produit n'est pas dans les favoris-->
-                                            <form method="post" action="{{ route('favoris.store') }}">
-                                                @csrf
-                                                <input type="hidden" value="{{ $article->id }}" name="articleId">
-                                                <button type="submit" class="btn btn-outline-secondary m-2">Ajouter aux
-                                                    favoris</button>
-                                            </form>
-                                        @endif
-                                    @endif
+
+                                        </div>
+
+                                        <div class="col">
+                                            <a href="{{ route('articles.show', $article) }}" class="m-1">
+                                                <button class="btn btn-dark validerCommande">Détails produit</button>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {{-- </form> --}}

@@ -4,6 +4,17 @@
     <!--TITRE PAGE-->
     <h1 class="page_title_campagne text-center">Campagnes en cours</h1>
 
+    <div class="btn-group dropup">
+        <button class="rounded-pill droptdown_gamme btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Choisissez une campagne
+        </button>
+        <ul class="dropdown-menu">
+            @foreach ($campagnes as $campagne)
+                <li class="dropdown-item"><a class="dropdown-item p-1" href="#{{ $campagne->nom }}">{{ $campagne->nom }}</a></li>
+            @endforeach
+        </ul>
+    </div>
     <!--BOUCLE QUI AFFICHE LES CAMPAGNES-->
     @foreach ($campagnes as $campagne)
         <div class="container-fluid text-center mt-5">
@@ -25,7 +36,7 @@
             </h4>
 
             <!--BOUCLE QUI AFFICHE LES ARTICES DANS LA REDUCTION-->
-            <div class="container-fluid d-flex justify-content-center ">
+            <div class="container-fluid d-flex justify-content-center m-5">
                 <div class="row text-center mt-5 ">
                     @foreach ($campagne->articles as $article)
                         <div class="col-md-3  text-center">
