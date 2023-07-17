@@ -5,11 +5,89 @@ h1 {
     padding-top: 2em;
 }
 
+/*
+
+couleurs:
+
+#FFB200 - orange
+#3F3028 - marron
+#A34A23 - terracotta 
+
+typographie:
+
+h1
+font-family: "cooper-black-std", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+h2,
+h...,
+p,
+a
+font-family: "june-expt-variable",sans-serif;
+    font-weight: 100;
+    font-variation-settings: 'STYL' 0;
+
+*/
+header {
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/background_h1.png);
+}
+
+body {
+    background-color: rgb(255, 247, 228);
+}
+
+/* * * * * * Font * * * * */
+
+h1 {
+    font-size: 8em;
+    padding-top: 1em;
+}
+
+.base_line_h1 {
+    font-family: "cooper-black-std", serif;
+    text-transform: uppercase;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_297716501.gif);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-position-y: 40em;
+    background-position-x: -23em;
+
+}
+
+
 h1,
 h2 {
     font-family: "june-expt-variable";
     color: #3F3028;
-    }
+
+    font-weight: 400;
+}
+
+.h1_404 {
+    padding-bottom: 80px;
+    padding-top: 200px;
+    font-size: 32em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.h1_panier {
+    padding-bottom: 80px;
+    padding-top: 200px;
+    font-size: 10em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
 h3,
 h4 {
@@ -18,8 +96,50 @@ h4 {
     color: #3F3028;
 }
 
+/* * * * * * Title h1 * * * * */
+
+.page_title {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_300428267.jpeg);
+    background-size: cover;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
+}
+
+.page_title_catalogue {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_184849661.jpeg);
+    background-size: cover;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
+
+}
+
+.page_title_campagne {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-size: cover;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
+
+}
+
+.title_gamme {
+    padding: 2em;
+}
+
 p,
-ul {
+ul,
+label {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -44,21 +164,21 @@ ul {
 /* EMAIL.BLADE.PHP --> VIEWS/PASSWORD
 ================================================================ */
 #email_blade {
-    height: 100vh; 
-    width:100%; 
-    background-size: cover; 
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
     background-position: center;
 }
 
 #email_blade #email_blade_card {
-    background-color: #ffb7003e; 
-    backdrop-filter: blur(7px); 
-    box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.945); 
+    background-color: #ffb7003e;
+    backdrop-filter: blur(7px);
+    box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.945);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.926);
 }
 
 #email_blade #email_blade_card button {
-    background-color: #3f3028cf; 
+    background-color: #3f3028cf;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.782);
 }
 
@@ -76,7 +196,7 @@ ul {
 #section_modif_article {
     background-color: #fef7e4;
     height: 100vh;
-    width:100%;
+    width: 100%;
 }
 
 #section_modif_article button {
@@ -109,7 +229,7 @@ ul {
 ================================================================ */
 #login_blade {
     height: 100vh;
-    width:100%;
+    width: 100%;
     background-size: cover;
     background-position: center;
 }
@@ -139,7 +259,7 @@ ul {
 ================================================================ */
 #register_blade {
     height: 100vh;
-    width:100%;
+    width: 100%;
     background-size: cover;
     background-position: center;
 }
@@ -233,7 +353,8 @@ ul {
 }
 
 #section_gestion_articles {
-    overflow-y: scroll; height: 50rem;
+    overflow-y: scroll;
+    height: 50rem;
 }
 
 #section_gestion_articles td {
@@ -286,10 +407,134 @@ ul {
 ================================================================ */
 
 /* 850px */
-@media screen and ( max-width: 850px ) {
+@media screen and (max-width: 850px) {
 
     /* Formualaire infos-mdp edit.blade  -->  view/user */
     #edit_blade_formulaire_infos_mdp {
         flex-direction: column;
+    }
+
+}
+
+.home_title {
+    font-size: 3em;
+}
+
+.font_promo {
+    font-family: "june-expt-variable";
+    color: white;
+}
+
+
+/* * * * * * Card * * * * */
+
+.card_note {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #c389005c;
+}
+
+.card_promo {
+    background-color: rgb(255, 252, 245);
+    box-shadow: 0px 2px 10px 2px #8f393972;
+
+}
+
+.note {
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    border-radius: 2em 2em 2em 2em;
+}
+
+.style_prix {
+    border-style: dotted;
+    color: rgba(240, 228, 201, 0.191);
+    border-radius: 1em;
+}
+
+
+/* * * * * * Icone animee * * * * */
+
+.star {
+    animation: rotate 5s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+.scroll {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2em;
+}
+
+
+/* * * * * * Footer * * * * */
+.logo_footer {
+    height: 6em;
+}
+
+.presentation {
+    font-size: 1.5em;
+    padding: 1em;
+    border-block-end: 2px solid;
+    writing-mode: horizontal-tb;
+}
+
+/* * * * * * Backoffice * * * * */
+
+/* * * * * * droptdown * * * * */
+.droptdown_gamme {
+    color: white;
+    background-color: #3F3028;
+    margin-top: 2em;
+    border-style: none;
+    margin-left: 2em;
+}
+
+.dropdown-menu {
+    background-color: rgb(255, 251, 243);
+}
+
+/* * * * * * * media queries * * * * * */
+
+@media only screen and (max-width: 1031px) {
+
+    .h1_404 {
+        font-size: 24em;
+    }
+
+    .presentation {
+        font-size: 1em;
+        padding: 1em;
+        border-block-end: 2px solid;
+        writing-mode: horizontal-tb;
+    }
+
+    .h1_panier {
+        font-size: 4em;
+        padding-bottom: 5em;
+    }
+
+    .presentation {
+        font-size: 1em;
+        padding: 1em;
+        border-block-end: 2px solid;
+        writing-mode: horizontal-tb;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .h1_404 {
+        font-size: 15em;
+        padding-bottom: 155px;
     }
 }

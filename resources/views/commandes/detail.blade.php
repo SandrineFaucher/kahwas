@@ -31,10 +31,10 @@
                             <th scope="col">Prix unitaire</th>
                             <!--si le champ réduction de la table article n'est pas vide
                             j'affiche cette réduction-->
-                            @if(!empty($article->pivot->reduction))
+                            
                             <th scope="col">Réduction</th>
                             <th scope="col">Prix réduit</th>
-                            @endif
+                            
                             <th scope="col">Description</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Prix</th>
@@ -60,6 +60,8 @@
                             j'affiche le prix réduit-->
                             @if (!empty($article->pivot->reduction))
                             <td>{{number_format($prixremise, 2, ',', ' ')}} €</td>
+                            @else
+                            <td> - </td>
                             @endif
                             <td>{{ $article->description }}</td>
                             <td>{{ $article->pivot->quantite }}</td>
@@ -77,6 +79,7 @@
                             $total = $article->prix * ($article->pivot->quantite);
                             @endphp
                             <td>{{(number_format($total, 2, ',', ' '))}} €</td>
+
                             @endif
 
                         </tr>

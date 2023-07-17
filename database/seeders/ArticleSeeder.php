@@ -11,13 +11,13 @@ class ArticleSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Article::create([
             'nom' => 'Sage barista express impress inox noir',
             'description' => 'La machine expresso SAGE Barista Express Impress est la continuation de la célèbre Barista Express, le modèle le plus vendu par la marque dans le monde ces cinq dernières années.',
             'description_detaillee' => 'Tout comme sa grande sœur, la Barista Express Impress SES876BST4EEU1 inox noir est conçue avec une belle carrosserie en acier inoxydable noir. Son moulin intégré contient des meules coniques en acier inoxydable de qualité, avec un système de 25 réglages différents pour obtenir la mouture idéale selon le café en grain choisi. 
-            SAGE a fourni des filtres simples, mais aussi des filtres pressurisés, qui peuvent être utilisés avec du café pré-moulu, une bonne idée les invités qui préfèrent un café décaféiné.',
+                                        SAGE a fourni des filtres simples, mais aussi des filtres pressurisés, qui peuvent être utilisés avec du café pré-moulu, une bonne idée les invités qui préfèrent un café décaféiné.',
             'image' => 'sage_barista_express_impress_bst_inox_noir.jpg',
             'prix' => 829.90,
             'stock' => 12,
@@ -29,7 +29,7 @@ class ArticleSeeder extends Seeder
             'nom' => 'Delonghi Dedica EC695.M inox brossé',
             'description' => 'La DeLonghi Dedica EC695.M est une dédicace à l\'art de vivre à l\'italienne ! Elle s\'adapte à tous les espaces grâce à sa silhouette et son design élégant.',
             'description_detaillee' => 'Cette petite machine à café polyvalente vous permet d\'utiliser du café prémoulu (grâce aux filtres pressurisés) ou des dosettes ESE (pratique pour les invités qui préfèrent un café décaféiné par exemple). 
-            Pour les amoureux de café fraîchement moulu, un moulin à café d\'entrée de gamme sera suffisant pour obtenir une mouture expresso adaptée aux filtres de cette machine à café Dedica. 
+                                        Pour les amoureux de café fraîchement moulu, un moulin à café d\'entrée de gamme sera suffisant pour obtenir une mouture expresso adaptée aux filtres de cette machine à café Dedica. 
             La Dedica EC695.M dispose d\'un thermoblock qui chauffe l\'eau rapidement et maintient la machine à la bonne température. Le temps de chauffe est d\'environ 35 secondes.',
             'image' => 'dedica_inox_5.jpg',
             'prix' => 199.00,

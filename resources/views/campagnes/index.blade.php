@@ -1,9 +1,8 @@
 @extends('layout.app')
 
 @section('content')
-
-<!--TITRE PAGE-->
-<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Campagnes en cours</span></h1>
+    <!--TITRE PAGE-->
+    <h1 class="page_title_campagne text-center">Campagnes en cours</h1>
 
     <!--BOUCLE QUI AFFICHE LES CAMPAGNES-->
     @foreach ($campagnes as $campagne)
@@ -37,7 +36,8 @@
 
                                 <!--DESCRIPTION-->
                                 <div>
-                                    <p class="card-text fw-bold fs-4 text-center border-bottom rounded">{{ $article->nom }}</p>
+                                    <p class="card-text fw-bold fs-4 text-center border-bottom rounded">{{ $article->nom }}
+                                    </p>
                                     <p class="card-text fs-5">{{ $article->description }}</p>
                                 </div>
 
@@ -54,15 +54,22 @@
                                 </div>
 
                                 <!--BOUTON DU DETAIL-->
-                                <div class="card-body ">
-                                    <a href="#" class="card-link">
-                                        <button type="button" class="btn btn-outline-secondary">
-                                            Détail de l'article
-                                        </button>
-                                    </a>
-
-                                    <!--BOUTONS D AJOUT OU DE SUPPRESSION DES FAVORIS-->
-                                    <!-- si l'utilisateur est connecté (sinon, pas de gestion des favoris)-->
+                                <div class="row text-center">
+                                    <form method="POST" action="{{ route('panier.add', $article) }}"
+                                        class="form-inline d-inline-block">
+                                        @csrf
+                                        <input value="1" type="number" name="quantite" placeholder="Quantité"
+                                            class="form-control m-1">
+                                        <div class="col ml-5">
+                                            <button type="submit" class="btn btn-warning m-1">Ajouter au
+                                                panier</button>
+                                        </div>
+                                    </form>
+                                    <div class="col ml-5">
+                                        <a href="{{ route('articles.show', $article) }}">
+                                            <button class="btn validerCommande">Détails produit</button>
+                                        </a>
+                                    </div>
                                     @if (Auth::user())
                                         <!-- si le produit est déjà dans les favoris-->
                                         @if (Auth::user()->isInFavorites($article))
@@ -70,7 +77,8 @@
                                             <form method="post" action="{{ route('favoris.destroy', $article->id) }}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger m-2">Retirer des
+                                                <button type="submit" class="btn btn-outline-danger m-2">Retirer
+                                                    des
                                                     favoris</button>
 
                                             </form>
@@ -84,15 +92,6 @@
                                             </form>
                                         @endif
                                     @endif
-
-                                      <!--BOUTON  D AJOUT AU PANIER-->      
-                                    <form method="POST" action="{{ route('panier.add', $article) }}"
-                                        class="form-inline d-inline-block">
-                                        @csrf
-                                        <input type="number" name="quantite" placeholder="Quantité"
-                                            class="form-control m-1">
-                                        <button type="submit" class="btn btn-outline-secondary">+ Ajouter au panier</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
