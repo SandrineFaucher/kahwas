@@ -29,7 +29,7 @@
         },
         "files": [
             "app/Helpers/UploadImage.php",
-            "app/Helpers/GetCampagne.php"
+            "app/Helpers/GetCampaign.php"
         ]
     },
     "autoload-dev": {
@@ -38,7 +38,7 @@
         }, 
         "files": [
             "app/Helpers/UploadImage.php",
-            "app/Helpers/GetCampagne.php"
+            "app/Helpers/GetCampaign.php"
         ]
     },
     "scripts": {

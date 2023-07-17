@@ -12,7 +12,7 @@ GetCampaign helper
  // renvoie la promo associée au produit dont l'id est en paramètre
  // si et seulement si elle est en cours
 
-function getCampagne($articleId)
+function GetCampaign($articleId)
 {
     foreach (Campagne::all() as $campagne) {
         // si et seulement si la campagne est en cours

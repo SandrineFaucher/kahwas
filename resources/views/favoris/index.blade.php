@@ -21,8 +21,8 @@
                         <p class="card-text fs-4 m-3">{{ $favori->description }}</p>
                     </div>
 
-                    <!--affichage de la réduction à l'aide d'une fontion GetCampagne dans un helpers-->
-                    @php $campagne = GetCampagne($favori->id) @endphp
+                    <!--affichage de la réduction à l'aide d'une fontion GetCampaign dans un helpers-->
+                    @php $campagne = GetCampaign($favori->id) @endphp
 
                      @if ($campagne)
                      <!--calcul prix remise-->

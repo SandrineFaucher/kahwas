@@ -30,7 +30,7 @@
                             ============================================================== -->
                             <div class="card-header">
 
-                                @php $campagne = GetCampagne($article->id) @endphp
+                                @php $campagne = GetCampaign($article->id) @endphp
                                 @if ($campagne)
 
                                     <div class="text-center d-flex justify-content-between">

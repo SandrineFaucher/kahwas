@@ -108,7 +108,7 @@ class CampagneController extends Controller
         //     'date_fin' => $request->date_fin
 
         // ]);
-        // syntaxe simplifiée de l'update
+        // syntaxe simplifiée de l'update pour voir les cases déjà cochées
         $campagne->update($request->all());
 
         // Eager loading pour charger les articles liés à la campagne 
