@@ -91,21 +91,21 @@
     <h4 class="text-center mt-5">Liste des campagnes </h4>
 
     <div class="container-fluid p-5 col-md-10">
-        
-            <div class="row text-center">
-                
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Réduction</th>
-                            <th scope="col">Date de début</th>
-                            <th scope="col">Date de fin</th>
-                            <th scope="col">modifier</th>
-                            <th scope="col">supprimer</th>
-                        </tr>
-                    </thead>
-                    @foreach ($campagnes as $campagne)
+
+        <div class="row text-center">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Réduction</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Date de fin</th>
+                        <th scope="col">modifier</th>
+                        <th scope="col">supprimer</th>
+                    </tr>
+                </thead>
+                @foreach ($campagnes as $campagne)
                     <tbody>
                         <tr>
                             <th>{{ $campagne->nom }}</th>
@@ -130,10 +130,10 @@
                             </td>
                         </tr>
                     </tbody>
-                    @endforeach
-                </table>
+                @endforeach
+            </table>
 
-            </div>
+        </div>
 
     </div>
 
@@ -144,7 +144,7 @@
 
 
     <!-- SECTION CREATION ARTICLE // ALEXIS
-    ============================================================ -->
+        ============================================================ -->
     <div id="section_cration_article">
         <div class="container-fluid pt-5">
             <!-- Titre section -->
@@ -154,38 +154,42 @@
 
 
                     <!-- CARD
-                    ============================================================ -->
+                        ============================================================ -->
                     <div class="card border-secondary text-light mt-1">
 
 
                         <!-- CARD HEADER
-                        ============================================================ -->
-                        <div class="card-header border-bottom border-secondary" id="header_card_index"><small>{{ __('Enregistrer un article') }}</small></div>
+                            ============================================================ -->
+                        <div class="card-header border-bottom border-secondary" id="header_card_index">
+                            <small>{{ __('Enregistrer un article') }}</small></div>
 
 
                         <!-- CARD BODY
-                        ============================================================ -->
+                            ============================================================ -->
                         <div class="card-body" id="body_card_index">
 
 
                             <!-- FORMULAIRE CREATION ARTICLE
-                            ============================================================ -->
+                                ============================================================ -->
                             <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                                @csrf
 
 
                                 <!-- SECTION NOM + IMAGE
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="d-flex justify-content-center gap-2">
 
 
                                     <!-- NOM
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mb-3">
-                                        <label for="nom" class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
+                                        <label for="nom"
+                                            class="col-form-label ms-1"><small>{{ __('Nom') }}</small></label>
 
                                         <div class="col-md-12">
-                                            <input id="nom" type="text" placeholder="Nom" class="form-control @error('name') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required>
+                                            <input id="nom" type="text" placeholder="Nom"
+                                                class="form-control @error('name') is-invalid @enderror" name="nom"
+                                                value="{{ old('nom') }}" required>
 
                                             @error('nom')
                                                 <span class="invalid-feedback" role="alert">
@@ -197,12 +201,16 @@
 
 
                                     <!-- IMAGE
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mb-3">
-                                        <label for="image" class="col-md-4 col-form-label text-center text-light"><small>{{ __('image')}}</small></label>
+                                        <label for="image"
+                                            class="col-md-4 col-form-label text-center text-light"><small>{{ __('image') }}</small></label>
 
                                         <div class="col-md-12">
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" placeholder="image.jpg" value="{{ old('image') }}" autocomplete="image" required>
+                                            <input id="image" type="file"
+                                                class="form-control @error('image') is-invalid @enderror" name="image"
+                                                placeholder="image.jpg" value="{{ old('image') }}" autocomplete="image"
+                                                required>
 
                                             @error('image')
                                                 <span class="invalid-feedback" role="alert">
@@ -216,12 +224,15 @@
 
 
                                 <!-- DESCRIPTION
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="col mb-3">
-                                    <label for="description" class="col-form-label ms-1"><small>{{ __('Description') }}</small></label>
+                                    <label for="description"
+                                        class="col-form-label ms-1"><small>{{ __('Description') }}</small></label>
 
                                     <div class="col-md-12">
-                                        <input id="description" type="text" placeholder="Description" class="form-control @error('descritpion') is-invalid @enderror" name="description" value="{{ old('description') }}" required>
+                                        <input id="description" type="text" placeholder="Description"
+                                            class="form-control @error('descritpion') is-invalid @enderror"
+                                            name="description" value="{{ old('description') }}" required>
 
                                         @error('descritpion')
                                             <span class="invalid-feedback" role="alert">
@@ -231,14 +242,17 @@
                                     </div>
                                 </div>
 
-        
+
                                 <!-- DESCRIPTION DETAILLEE
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="col mb-3">
-                                    <label for="description_detaillee" class="col-form-label ms-1"><small>{{ __('Descritpion détaillée') }}</small></label>
+                                    <label for="description_detaillee"
+                                        class="col-form-label ms-1"><small>{{ __('Descritpion détaillée') }}</small></label>
 
                                     <div class="col-md-12">
-                                        <textarea id="description_detaillee" type="text" placeholder="Description détaillée" class="form-control @error('description_detaillee') is-invalid @enderror" name="description_detaillee" value="{{ old('descritpion_detaillee') }}" required></textarea>
+                                        <textarea id="description_detaillee" type="text" placeholder="Description détaillée"
+                                            class="form-control @error('description_detaillee') is-invalid @enderror" name="description_detaillee"
+                                            value="{{ old('descritpion_detaillee') }}" required></textarea>
 
                                         @error('description_detaillee')
                                             <span class="invalid-feedback" role="alert">
@@ -250,17 +264,20 @@
 
 
                                 <!-- SECTION PRIX + STOCK
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="d-flex justify-content-center gap-2">
 
 
                                     <!-- PRIX
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mb-3">
-                                        <label for="prix" class="col-form-label ms-1"><small>{{ __('Prix') }}</small></label>
+                                        <label for="prix"
+                                            class="col-form-label ms-1"><small>{{ __('Prix') }}</small></label>
 
                                         <div class="col-md-12">
-                                            <input id="prix" type="number" placeholder="Prix" class="form-control @error('prix') is-invalid @enderror" name="prix" value="{{ old('prix') }}" required>
+                                            <input id="prix" type="number" placeholder="Prix"
+                                                class="form-control @error('prix') is-invalid @enderror" name="prix"
+                                                value="{{ old('prix') }}" required>
 
                                             @error('prix')
                                                 <span class="invalid-feedback" role="alert">
@@ -272,12 +289,15 @@
 
 
                                     <!-- STOCK
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mb-3">
-                                        <label for="stock" class="col-form-label ms-1"><small>{{ __('Stock') }}</small></label>
+                                        <label for="stock"
+                                            class="col-form-label ms-1"><small>{{ __('Stock') }}</small></label>
 
                                         <div class="col-md-12">
-                                            <input id="stock" type="number" placeholder="Stock" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" required>
+                                            <input id="stock" type="number" placeholder="Stock"
+                                                class="form-control @error('stock') is-invalid @enderror" name="stock"
+                                                value="{{ old('stock') }}" required>
 
                                             @error('stock')
                                                 <span class="invalid-feedback" role="alert">
@@ -292,17 +312,20 @@
 
 
                                 <!-- SECTION NOTE + GAMME
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="d-flex justify-content-center gap-2">
 
 
                                     <!-- NOTE
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mb-3">
-                                        <label for="note" class="col-form-label ms-1"><small>{{ __('Note') }}</small></label>
+                                        <label for="note"
+                                            class="col-form-label ms-1"><small>{{ __('Note') }}</small></label>
 
                                         <div class="col-md-12">
-                                            <input id="note" type="number" placeholder="Note" class="form-control @error('note') is-invalid @enderror" name="note" value="{{ old('note') }}" required>
+                                            <input id="note" type="number" placeholder="Note"
+                                                class="form-control @error('note') is-invalid @enderror" name="note"
+                                                value="{{ old('note') }}" required>
 
                                             @error('note')
                                                 <span class="invalid-feedback" role="alert">
@@ -314,7 +337,7 @@
 
 
                                     <!-- GAMME
-                                    ============================================================ -->
+                                        ============================================================ -->
                                     <div class="col mt-3">
                                         <label class="pb-2" for="gamme_id"></label>
 
@@ -333,10 +356,12 @@
 
 
                                 <!-- BOUTTON VALIDATION ENREGISTREMENT
-                                ============================================================ -->
+                                    ============================================================ -->
                                 <div class="row mt-4">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn col-12 border-secondary" id="button_validation_enregistrement"><small class="text-light">{{ __('Enregistrer') }}</small></button>
+                                        <button type="submit" class="btn col-12 border-secondary"
+                                            id="button_validation_enregistrement"><small
+                                                class="text-light">{{ __('Enregistrer') }}</small></button>
                                     </div>
                                 </div>
 
@@ -352,21 +377,22 @@
 
 
         <!-- SECTION GESTION ARTICLES
-        ============================================================ -->
+            ============================================================ -->
         <!-- Titre section -->
         <h2 class="text-center mt-5">Gestion des articles</h2>
-        <div class="container-fluid col-11 p-1 mt-2 border border-dark rounded justify-content-center" id="section_gestion_articles">
+        <div class="container-fluid col-11 p-1 mt-2 border border-dark rounded justify-content-center"
+            id="section_gestion_articles">
             <div class="row justify-content-center">
                 <div class="col">
 
 
                     <!-- TABLE
-                    ============================================================ -->
+                        ============================================================ -->
                     <div class="table-responsive border rounded p-2">
                         <table class="table border-dark">
 
                             <!-- TITRE DES COLONNES
-                            ============================================================ -->
+                                ============================================================ -->
                             <thead>
                                 <tr class="border-secondary">
                                     <!-- Nom -->
@@ -389,21 +415,22 @@
                             </thead>
 
                             <!-- BOUCLE AFFICHAGE INFOS ARTICLES
-                            ============================================================ -->
-                            @foreach ($articles as $article)
-
-                                <!-- ARTICLES
                                 ============================================================ -->
+                            @foreach ($articles as $article)
+                                <!-- ARTICLES
+                                    ============================================================ -->
                                 <tbody>
                                     <tr class="border-secondary">
                                         <!-- Nom -->
-                                        <td class="border-end fs-5">{{$article->nom}}</td>
+                                        <td class="border-end fs-5">{{ $article->nom }}</td>
                                         <!-- Description -->
-                                        <td class="border-end">{{$article->description}}</td>
+                                        <td class="border-end">{{ $article->description }}</td>
                                         <!-- Image -->
-                                        <td class="border-end text-center"><img src="{{ asset('images/' . $article->image) }}" class="rounded-top" alt="{{$article->nom}}" style="width: 7rem"></td>
+                                        <td class="border-end text-center"><img
+                                                src="{{ asset('images/' . $article->image) }}" class="rounded-top"
+                                                alt="{{ $article->nom }}" style="width: 7rem"></td>
                                         <!-- Prix -->
-                                        <td class="border-end fs-5 text-center">{{$article->prix}} €</td>
+                                        <td class="border-end fs-5 text-center">{{ $article->prix }} €</td>
                                         <!-- Stock -->
                                         <td class="border-end fs-5 text-center">{{ $article->stock }}</td>
                                         <!-- Note -->
@@ -411,30 +438,139 @@
                                         <!-- Boutton modifier -->
                                         <td>
                                             <a href="{{ route('articles.edit', $article) }}">
-                                                <button type="button mx-auto" class="btn btn-outline-secondary text-light" id="button_modif">Modifier</button>
+                                                <button type="button mx-auto" class="btn btn-outline-secondary text-light"
+                                                    id="button_modif">Modifier</button>
                                             </a>
                                         </td>
                                         <!-- Boutton supprimer -->
                                         <td>
                                             <form action="{{ route('articles.destroy', $article) }}" method="post">
-                                            @csrf
-                                            @method('delete')
+                                                @csrf
+                                                @method('delete')
                                                 <button type="submit" class="btn btn-danger border-0">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
                                 </tbody>
-
                             @endforeach
 
                         </table>
                     </div>
 
-            
+
                 </div>
             </div>
         </div>
     </div>
 
-    
+
+<!-- SECTION CREATION GAMMES
+        
+@section('content')
+    <h3 class="text-center mx-auto">
+            Backoffice</h3>
+
+        <div class="mx-auto text-center">
+            <h3 class="pb-2">Créer une gamme</h3>
+            <form class="p-3" action="{{ route('gammes.store') }}" method="POST">
+                @csrf
+                <!-- Champs du formulaire -->
+    <input type="text" name="nom" placeholder="Nom de la gamme">
+
+    <!-- Bouton de soumission -->
+    <button type="submit">Ajouter</button>
+    </form>
+    <div class="mx-auto text-center">
+
+        <h3 class="p-2">Liste des gammes</h3>
+
+        <div class="container">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Modifier</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+
+                <div class="form-group">
+
+
+                    <tbody>
+                        @foreach ($gammes as $gamme)
+                            <tr>
+                                <th scope="row">{{ $gamme->id }}</th>
+                                <td>{{ $gamme->nom }}</td>
+
+                                <td>
+                                    <a href="{{ route('gammes.edit', $gamme) }}">
+                                        <button class="style_button btn btn-primary rounded-pill m-1">Modifier</button>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <form action="{{ route('gammes.destroy', $gamme) }}" method="post">
+                                        @method ("delete")
+                                        @csrf
+                                        <button type="submit"
+                                            class="style_button btn btn-danger  rounded-pill  m-1">Supprimer</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+    </div>
+
+<!-- Créer une gamme -->
+
+<div class="container w-50 p-5" style="display:none" id="rangesForm">
+    <h3>Créer une gamme</h3>
+    <form method="post" action="{{ route('gammes.store') }}">
+        @csrf
+        <div class="form-group">
+            <label for="nom">nom</label>
+            <input required type="text" class="form-control" name="nom" value="" id="nom">
+        </div>
+        <button type="submit" class="btn btn-info text-light mt-4">Valider</button>
+    </form>
+</div>
+
+
+
+<!-- Liste des gammes -->
+
+<div class="container w-50 p-5" style="display:none" id="rangesList">
+    <h3 class="mb-3">Liste des gammes</h3>
+
+    <table class="table table-info">
+        <thead class="thead-dark">
+            <th>id</th>
+            <th>nom</th>
+            <th>modifier</th>
+            <th>supprimer</th>
+        </thead>
+        @foreach ($gammes as $gamme)
+            <tr>
+                <td>{{ $gamme->id }}</td>
+                <td>{{ $gamme->nom }}</td>
+                <td><a href="{{ route('gammes.edit', $gamme) }}"><button
+                            class="btn btn-warning">Modifier</button></a>
+                </td>
+                <td>
+                    <form method="post" action="{{ route('gammes.destroy', $gamme) }}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+</div>
 @endsection

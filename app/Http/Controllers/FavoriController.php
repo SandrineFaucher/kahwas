@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 
-
 class FavoriController extends Controller
 {
     /**

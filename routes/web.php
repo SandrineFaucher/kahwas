@@ -102,3 +102,11 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middlewa
 
 // Route  "ADRESSE"
 Route::resource('/adresse', App\Http\Controllers\AdresseController::class)->except('index', 'create', 'edit');
+
+
+// Les autres routes avant
+
+// Méthode fallback() en dernière position
+Route::fallback(function () {
+    return view('404'); // la vue 404.blade.php
+});

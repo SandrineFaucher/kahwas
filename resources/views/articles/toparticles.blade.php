@@ -12,7 +12,7 @@
     <div class="container-fluid pt-3" id="section_top_articles">
 
         <!-- titre section -->
-        <h1 class="text-center p-0 fs-1"><span class="px-5 border border-secondary rounded">Les articles les mieux notés</span></h1>
+        <h1 class="text-center p-5 mt-5 fs-1"><span class="px-5 border border-secondary rounded">Les articles les mieux notés</span></h1>
 
 
         <div class="row justify-content-center">

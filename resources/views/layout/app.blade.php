@@ -53,98 +53,96 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
 
-                        <!-------------------------------- liens accessibles à tous --------------------------------->
+                    <!-------------------------------- liens accessibles à tous --------------------------------->
 
-                        <!-- Lien produits les mieux notés -->
+                    <!-- Lien produits les mieux notés -->
 
-                        <div class="row mx-auto">
+                    <div class="row navbar-nav ms-auto">
 
-                            <div class="col">
-                                <a class="nav-link active"
-                                    href="{{ route('toparticles') }}">{{ __('Top des articles') }}</a>
-                            </div>
-
-                            <div class="col">
-                                <a class="nav-link active" aria-current="articles"
-                                    href="{{ route('articles.index') }}">Catalogue</a>
-                            </div>
-
-                            <div class="col">
-                                <a class="nav-link active" aria-current="gammes"
-                                    href="{{ route('gammes.index') }}">Gammes</a>
-                            </div>
-
-                            <div class="col">
-                                <a class="nav-link active" aria-current="gammes"
-                                    href="{{ route('gammes.index') }}">Promotions</a>
-                            </div>
-
-                            <div class="col">
-                                <a class="nav-link active" aria-current="panier" href="./article.php">Panier</a>
-                            </div>
-
-                            <!-------------------------------- favoris : uniquement si connecté --------------------------------->
-
-                            @if (Auth::user())
-                                <div class="col">
-                                    <a class="nav-link active" aria-current="panier" href="./article.php">Favoris</a>
-                                </div>
-                            @endif
-
+                        <div class="col-md-2">
+                            <a class="nav-link active"
+                                href="{{ route('toparticles') }}">{{ __('Top articles') }}</a>
                         </div>
 
-                        <!-------------------------------- liens accessibles aux invités uniquement --------------------------------->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
-                                </li>
-                            @endif
+                        <div class="col-md-2">
+                            <a class="nav-link active" aria-current="articles"
+                                href="{{ route('articles.index') }}">Catalogue</a>
+                        </div>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
-                                </li>
-                            @endif
+                        <div class="col-md-2">
+                            <a class="nav-link active" aria-current="gammes"
+                                href="{{ route('gammes.index') }}">Gammes</a>
+                        </div>
+
+                        <div class="col-md-2">
+                            <a class="nav-link active" aria-current="gammes"
+                                href="{{ route('campagnes.index') }}">Promotions</a>
+                        </div>
+
+                        <div class="col-md-2">
+                            <a class="nav-link active" aria-current="panier"
+                                href="{{ route('panier.show') }}">Panier</a>
+                        </div>
+
+
+                        {{-- <!-------------------------------- liens accessibles aux invités uniquement ---------------------------------> --}}
+
+                        @guest
+                            <div class="col-md-2 d-flex nav-item">
+                                @if (Route::has('login'))
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                @endif
+                                @if (Route::has('register'))
+                                    <a class="nav-link ps-2" href="{{ route('register') }}">{{ __('Inscription') }}</a>
+                                @endif
+                            </div>
 
                             <!-------------------------------- liens accessibles aux connectés uniquement --------------------------------->
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->pseudo }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                    <!-- Lien vers "MON COMPTE" -->
-                                    <a class="dropdown-item" href="{{ route('user.edit', $user = Auth::user()) }}">Mon
-                                        compte</a>
-
-                                    <!-- Lien vers "DECONNEXION" -->
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Déconnexion') }}
+                            <div class="col">
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->pseudo }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                    @if (Auth::user()->role_id == 2)
-                                        <a class="dropdown-item" href="{{ route('admin') }}">
-                                            Back-office
+                                        <!-- Lien vers "MON COMPTE" -->
+                                        <a class="dropdown-item" href="{{ route('user.edit', $user = Auth::user()) }}">Mon
+                                            compte</a>
+
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+
+                                        @if (Auth::user()->role_id == 2)
+                                            <a class="dropdown-item" href="{{ route('admin') }}">
+                                                Back-office
+                                            </a>
+                                        @endif
+
+                                        <!-------------------------------- favoris : uniquement si connecté --------------------------------->
+
+                                        <a class="dropdown-item" aria-current="panier"
+                                            href="{{ route('favoris.index') }}">Favoris</a>
+                                        <a class="dropdown-item" aria-current="commande"
+                                            href="{{ route('commandes.index') }}">Commandes</a>
+
+                                        <!-- Lien vers "DECONNEXION" -->
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                            {{ __('Déconnexion') }}
                                         </a>
-                                    @endif
-                                </div>
-                            </li>
-
+                                    </div>
+                                </li>
+                            </div>
                             @endif
-
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

@@ -41,7 +41,7 @@ class Article extends Model
     // cardinalité 0,n
 
     public function campagnes(){
-        return $this->belongsToMany(Campagne::class, 'campagne_articles');
+        return $this->belongsToMany(Campagne::class, 'campagnes_articles');
     }
 
     // relation avec les utilisateurs qui mettent l'article en favori

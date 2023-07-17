@@ -78,6 +78,17 @@ h2 {
     color: transparent;
 }
 
+.h1_panier {
+    padding-bottom: 80px;
+    padding-top: 200px;
+    font-size: 10em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
 h3,
 h4 {
     font-family: 'Roboto', sans-serif;
@@ -104,6 +115,18 @@ h4 {
     padding-top: 2em;
     padding-bottom: 1em;
     background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_184849661.jpeg);
+    background-size: cover;
+    background-position-y: 44.5em;
+    background-attachment: fixed;
+
+}
+
+.page_title_campagne {
+    font-size: 8em;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
     background-size: cover;
     background-position-y: 44.5em;
     background-attachment: fixed;
@@ -487,6 +510,18 @@ ul {
 
     .h1_404 {
         font-size: 24em;
+    }
+
+    .presentation {
+        font-size: 1em;
+        padding: 1em;
+        border-block-end: 2px solid;
+        writing-mode: horizontal-tb;
+    }
+
+    .h1_panier {
+        font-size: 4em;
+        padding-bottom: 5em;
     }
 
     .presentation {

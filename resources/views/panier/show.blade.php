@@ -33,13 +33,13 @@
                                 </td>
 
                                 <!--  PRIX = si la clé campagne existe pour cet article, j'affiche le nom de la promo + % réduction + prix barré + prix promo -->
-                                
+
                                 @if (isset($article['campagne']))
                                     <td><span>{{ $article['campagne']->nom }} :
-                                        -{{ $article['campagne']->reduction }}%</span>
+                                            -{{ $article['campagne']->reduction }}%</span>
                                         <del>{{ $article['prix'] }} €</del>
                                         @php $prixremise = $article['prix']- ($article['prix'] * $article['campagne']->reduction / 100)@endphp
-                                       <span> {{ number_format($prixremise, 2, ',', ' ') }}€</span>
+                                        <span> {{ number_format($prixremise, 2, ',', ' ') }}€</span>
                                     </td>
                                 @else
                                     <td>{{ $article['prix'] }} €</td>
@@ -95,7 +95,7 @@
 
 
             <!-- ==================================================== Boutons VALIDER/VIDER ============================================== -->
-                                                    
+
             <div class="d-flex justify-content-center">
 
                 <!-- Lien pour valider le panier -->
@@ -108,7 +108,7 @@
                     title="Retirer tous les produits du panier">Vider
                     le panier</a>
             @else
-                <div class="alert alert-info">Aucun produit au panier</div>
+                <h1 class="h1_panier mx-auto text-center">Aucun produit au panier</h1>
 
             </div>
         @endif

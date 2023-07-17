@@ -3,7 +3,7 @@
 @section('content')
 
 <!--TITRE PAGE-->
-<h1 class="text-center p-0 "><span class="px-5 border border-secondary rounded">Articles favoris</span></h1>
+<h1 class="text-center  mt-5"><span class="px-5 border border-secondary rounded">Articles favoris</span></h1>
 
     <!--AFFICHAGE DES ARTICCLES FAVORIS-->
     <div class="container-fluid d-flexjustify-content-center ">

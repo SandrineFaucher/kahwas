@@ -56,7 +56,7 @@ class GammeController extends Controller
         ]);
 
         //3) On redirige vers l'accueil avec un message de succès
-        return redirect()->route('back')->with('message', 'Gamme créée avec succès');
+        return redirect()->route('admin')->with('message', 'Gamme créée avec succès');
     }
 
     /**
@@ -88,7 +88,7 @@ class GammeController extends Controller
         $gamme->update($request->all());
 
         //3) On redirige vers l'accueil avec un message de succès
-        return redirect()->route('back')->with('message', 'Gamme modifié avec succès');
+        return redirect()->route('admin')->with('message', 'Gamme modifié avec succès');
     }
 
     /**
@@ -97,6 +97,6 @@ class GammeController extends Controller
     public function destroy(Gamme $gamme)
     {
         $gamme->delete();
-        return redirect()->route('back')->with('message', 'Gamme supprimée avec succès');
+        return redirect()->route('admin')->with('message', 'Gamme supprimée avec succès');
     }
 }
