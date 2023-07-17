@@ -27,7 +27,6 @@ class ArticleFactory extends Factory
             'stock' => $this->faker->randomNumber(3, true),
             'note' => rand(3, 5),
             'gamme_id' => rand(1, Gamme::count()),
-
         ];
     }
 }

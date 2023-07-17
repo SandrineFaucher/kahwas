@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CampagneController;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GammeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::put('/user/updatepassword/{user}', [App\Http\Controllers\UserController::
 
 
 //*******************Route pour les méthodes du controller Campagne**************************/
-Route::resource('/campagnes', \App\Http\Controllers\CampagneController::class);
+Route::resource('/campagnes', CampagneController::class);
 
 //*****************Route pour les méthodes du Controller favoris*****************************/
 Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->except('create', 'show', 'update', 'edit');
@@ -90,10 +91,13 @@ Route::resource('/articles', ArticleController::class);
 Route::get('/toparticles', [App\Http\Controllers\ArticleController::class, 'topArticles'])->name('toparticles');
 
 
+// ******************* Les routes ressources Gammes **************** //
+
+Route::resource('/gammes', GammeController::class);
 
 
 //*******************Route pour la gestion du back-office************************************/
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
 
 
 // Route  "ADRESSE"
