@@ -92,7 +92,7 @@
                                                 <input value="1" type="number" name="quantite" placeholder="Quantité"
                                                     class="form-control m-1">
                                                 <div class="col ml-5">
-                                                    <button type="submit" class="btn btn-warning m-1">Ajouter au
+                                                    <button type="submit" class="ajoutValider btn m-1">Ajouter au
                                                         panier</button>
                                                 </div>
                                             </form>

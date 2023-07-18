@@ -227,7 +227,6 @@
                             <div class="form-group">
                                 <label for="adresseLivraisonId">Choisissez une adresse</label>
                                 <select name="adresseLivraisonId" id="adresseLivraisonId">
-                                    <option value=""></option>
                                     @foreach ($user->adresses as $adresse)
                                         <option value="{{ $adresse->id }}">
                                             <p>{{ $adresse->adresse }}</p>
@@ -280,7 +279,6 @@
                             <div class="form-group">
                                 <label for="adresseFacturationId">Choisissez une adresse</label>
                                 <select name="adresseFacturationId" id="adresseFacturationId">
-                                    <option value=""></option>
                                     @foreach ($user->adresses as $adresse)
                                         <option value="{{ $adresse->id }}">
                                             <p>{{ $adresse->adresse }}</p>

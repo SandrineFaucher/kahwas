@@ -12,7 +12,7 @@
     <div class="container-fluid pt-3" id="section_top_articles">
 
         <!-- titre section -->
-        <h1 class="text-center p-5 mt-5 fs-1"><span class="px-5 border border-secondary rounded">Les articles les mieux notés</span></h1>
+        <h1 class="text-center p-5 mt-5 fs-1 page_title_catalogue">Les articles les mieux notés</span></h1>
 
 
         <div class="row justify-content-center">
@@ -65,26 +65,65 @@
                                 </div>
                             </div>
 
+                            
 
-                            <!-- Bouton “AJOUT AU PANIER“ + “DETAILS PRODUIT“ -->
-                            <div class="card-footer border-top rounded d-flex justify-content-between gap-2">
-
-                                <!-- boutton ajout au panier -->
-                                <form method="POST" action="{{ route('panier.add', 1) }}" class="form-inline d-inline-block">
+                            <!-- boutton ajout au panier -->
+                <div class="container text-center">
+                    <div class="row text-center mt-1">
+                        <div class="col-md-12">
+                            <form method="POST" action="{{ route('panier.add', 1) }}"
+                                class="form-inline d-inline-block">
                                 {{ csrf_field() }}
 
-                                    <input type="number" name="quantite" placeholder="Quantité ?" class="form-control mr-2">
-                                    <button type="submit" class="ajoutValider btn">+ Ajouter au panier</button>
+                                <input value="1" type="number" name="quantite" placeholder="Quantité ?"
+                                    class="form-control mr-2">
+                            </form>
+                        </div>
 
-                                </form>
+                        <div class="col-md-12">
+                            @if (Auth::user())
+                                <!-- si le produit est déjà dans les favoris-->
+                                @if (Auth::user()->isInFavorites($article))
+                                    <!-- si dans les favoris-->
+                                    <form method="post" action="{{ route('favoris.destroy', $article->id) }}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-outline-danger m-2">Retirer
+                                            des
+                                            favoris</button>
 
-                                <!-- boutton détails produit -->
-                                <a href="{{ route('articles.show', $article) }}">
-                                    <button class="btn btn-outline-secondary validerCommande">Détails produit</button>
-                                </a>
+                                    </form>
+                                @else
+                                    <!-- si le produit n'est pas dans les favoris-->
+                                    <form method="post" action="{{ route('favoris.store') }}">
+                                        @csrf
+                                        <input type="hidden" value="{{ $article->id }}" name="articleId">
+                                        <button type="submit" class="btn btn-outline-secondary m-2">Ajouter aux
+                                            favoris</button>
+                                    </form>
+                                @endif
+                            @endif
+                        </div>
 
-                            </div>
+                        <div class="col">
 
+                            <form method="POST" action="{{ route('panier.add', 1) }}"
+                                class="form-inline d-inline-block">
+                                {{ csrf_field() }}
+
+                                <button type="submit" class="ajoutValider btn">Ajouter au panier</button>
+
+                            </form>
+
+                        </div>
+
+                        <div class="col">
+                            <a href="{{ route('articles.show', $article) }}" class="m-1">
+                                <button class="btn validerCommande">Détails produit</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
     
                         </div>
                     </div>
