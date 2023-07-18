@@ -1,5 +1,6 @@
 @extends('layout.app')
 @section('content')
+<h1 class="h1_panier text-center m-5">Mon panier</h1>
     <div class="container">
 
         @if (session()->has('message'))
@@ -7,7 +8,6 @@
         @endif
 
         @if (session()->has('panier'))
-            <h1 class="text-center m-5">Mon panier</h1>
             <div class="table-responsive shadow mb-3">
                 <table class="table table-bordered table-hover bg-white mb-0">
                     <thead class="thead-dark">
@@ -51,7 +51,7 @@
                                         class="form-inline d-inline-block">
                                         {{ csrf_field() }}
                                         <input type="number" name="quantite" placeholder="Quantité ?"
-                                            value="{{ $article['quantite'] }}" class="form-control mr-2"
+                                            value="{{ $article['quantite'] }}" class="form-control pl-3"
                                             style="width: 80px">
                                         <input type="submit" class="btn ajoutValider" value="Actualiser" />
                                     </form>
@@ -96,7 +96,7 @@
 
             <!-- ==================================================== Boutons VALIDER/VIDER ============================================== -->
 
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center pb-5">
 
                 <!-- Lien pour valider le panier -->
                 @if (Auth::user())

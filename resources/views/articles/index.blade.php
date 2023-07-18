@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Modifier article
+    Kahwas - Catalogue
 @endsection
 
 

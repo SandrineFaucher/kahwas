@@ -55,21 +55,10 @@ class GammeController extends Controller
             'nom' => $request->nom
         ]);
 
-        //3) On redirige vers l'accueil avec un message de succès
+        //3) On redirige vers backoffice avec un message de succès
         return redirect()->route('admin')->with('message', 'Gamme créée avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Gamme $gamme)
     {
         return view('gammes/edit', ['gamme' => $gamme]);
@@ -88,7 +77,7 @@ class GammeController extends Controller
         $gamme->update($request->all());
 
         //3) On redirige vers l'accueil avec un message de succès
-        return redirect()->route('admin')->with('message', 'Gamme modifié avec succès');
+        return redirect()->route('admin')->with('message', 'Gamme modifié avec succès'); //
     }
 
     /**

@@ -474,7 +474,7 @@
             <h3 class="pb-2">Créer une gamme</h3>
             <form class="p-3" action="{{ route('gammes.store') }}" method="POST">
                 @csrf
-                <!-- Champs du formulaire -->
+                <!---Champs du formulaire -->
     <input type="text" name="nom" placeholder="Nom de la gamme">
 
     <!-- Bouton de soumission -->
@@ -535,7 +535,7 @@
         @csrf
         <div class="form-group">
             <label for="nom">nom</label>
-            <input required type="text" class="form-control" name="nom" value="" id="nom">
+            <input required type="text" class="form-control" name="nom" placeholder="moulin à café" id="nom">
         </div>
         <button type="submit" class="btn btn-info text-light mt-4">Valider</button>
     </form>

@@ -10,7 +10,7 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
-    // Function limit 3 et les notes du produits
+    // Function limit 3 cards/articles et les notes du produits
     public function index()
     {
         $promoActuelle = Campagne::where('date_debut', '<=', date('y-m-d')) //Promo actuelle, Date de début de la campagne commencée
@@ -27,19 +27,12 @@ class HomeController extends Controller
             ->get();
 
 
-
         //je retourne la vue home en y injectant les posts
         return view('home', [
             'articles' => $articles,
             'promoActuelle' => $promoActuelle[0],  //[0]<- l'intérêt est de récuperer seulement la promo du moment
         ]);
     }
-    // public function catalogue()
-    // {
-    //     $articles = Article::
-    //     $posts = Post::all();
-    //     dd($posts);
-    // }
 }
 
 
