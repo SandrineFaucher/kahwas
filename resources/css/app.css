@@ -48,7 +48,7 @@ h1 {
 .base_line_h1 {
     font-family: "cooper-black-std", serif;
     text-transform: uppercase;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_297716501.gif);
+    background-image: url(/public/images/AdobeStock_297716501.gif);
     background-size: contain;
     background-clip: text;
     -webkit-background-clip: text;
@@ -71,7 +71,7 @@ h2 {
     padding-bottom: 80px;
     padding-top: 200px;
     font-size: 32em;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-image: url(/public/images/404.jpeg);
     background-size: contain;
     background-clip: text;
     -webkit-background-clip: text;
@@ -82,7 +82,7 @@ h2 {
     padding-bottom: 80px;
     padding-top: 200px;
     font-size: 10em;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-image: url(/public/images/404.jpeg);
     background-size: contain;
     background-clip: text;
     -webkit-background-clip: text;
@@ -103,7 +103,7 @@ h4 {
     color: white;
     padding-top: 2em;
     padding-bottom: 1em;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_300428267.jpeg);
+    background-image: url(/public/images/AdobeStock_300428267.jpeg);
     background-size: cover;
     background-position-y: 44.5em;
     background-attachment: fixed;
@@ -114,7 +114,7 @@ h4 {
     color: white;
     padding-top: 2em;
     padding-bottom: 1em;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/AdobeStock_184849661.jpeg);
+    background-image: url(/public/images/AdobeStock_184849661.jpeg);
     background-size: cover;
     background-position-y: 44.5em;
     background-attachment: fixed;
@@ -126,7 +126,7 @@ h4 {
     color: white;
     padding-top: 2em;
     padding-bottom: 1em;
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/404.jpeg);
+    background-image: url(/public/images/404.jpeg);
     background-size: cover;
     background-position-y: 44.5em;
     background-attachment: fixed;

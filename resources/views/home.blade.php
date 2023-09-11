@@ -54,96 +54,100 @@
 
 
         {{-- promos --}}
-
-        <div class="rounded-5 pb-5 rounded-top-0">
-            <div class="font_promo text-center mx-auto p-5">
-                <h2 class="home_title mx-auto text-center">{{ $promoActuelle->nom }}</h2>
-                <div class="p-3">
-                    <h3>{{ $promoActuelle->reduction }} % sur une selection d'articles du {{ $promoActuelle->date_debut }}
-                        au {{ $promoActuelle->date_fin }}</h3>
+        @if ($promoActuelle)
+            <div class="rounded-5 pb-5 rounded-top-0">
+                <div class="font_promo text-center mx-auto p-5">
+                    <h2 class="home_title mx-auto text-center">{{ $promoActuelle->nom }}</h2>
+                    <div class="p-3">
+                        <h3>{{ $promoActuelle->reduction }} % sur une selection d'articles du
+                            {{ $promoActuelle->date_debut }}
+                            au {{ $promoActuelle->date_fin }}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="containter pt-3">
-                <div class="row w-75 mx-auto">
-                    @foreach ($promoActuelle->articles as $article)
-                        <div class="col-md-4">
-                            <div class="card_promo card p-3 mb-5 rounded-4">
-                                <img class="rounded-1" src="{{ asset('images/' . $article->image) }}"
-                                    alt="Image de l'article">
+                <div class="containter pt-3">
+                    <div class="row w-75 mx-auto">
+                        @foreach ($promoActuelle->articles as $article)
+                            <div class="col-md-4">
+                                <div class="card_promo card p-3 mb-5 rounded-4">
+                                    <img class="rounded-1" src="{{ asset('images/' . $article->image) }}"
+                                        alt="Image de l'article">
 
-                                <div class="card-body">
-                                    <h3 class="card-title text-center mb-3">{{ $article->nom }}</h3>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <p class="card-text">{{ $article->description }}</p>
-                                        </div>
-                                        <div class="style_prix col text-center">
-                                            <p class=" text-decoration-line-through">{{ $article->prix }} €</p>
-                                            @php
-                                                $prixremise = $article->prix - ($article->prix * $promoActuelle->reduction) / 100; //remise sur article promo
-                                            @endphp
-                                            <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }} €</p>
-                                        </div>
-
-                                        <div class="row text-center">
-                                            <form method="POST" action="{{ route('panier.add', $article) }}"
-                                                class="form-inline d-inline-block">
-                                                @csrf
-                                                <input value="1" type="number" name="quantite" placeholder="Quantité"
-                                                    class="form-control m-1">
-                                                <div class="col ml-5">
-                                                    <button type="submit" class="btn btn-warning m-1">Ajouter au
-                                                        panier</button>
-                                                </div>
-                                            </form>
-                                            <div class="col ml-5">
-                                                <a href="{{ route('articles.show', $article) }}">
-                                                    <button class="btn validerCommande">Détails produit</button>
-                                                </a>
+                                    <div class="card-body">
+                                        <h3 class="card-title text-center mb-3">{{ $article->nom }}</h3>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <p class="card-text">{{ $article->description }}</p>
                                             </div>
-                                            @if (Auth::user())
-                                                <!-- si le produit est déjà dans les favoris-->
-                                                @if (Auth::user()->isInFavorites($article))
-                                                    <!-- si dans les favoris-->
-                                                    <form method="post"
-                                                        action="{{ route('favoris.destroy', $article->id) }}">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger m-2">Retirer
-                                                            des
-                                                            favoris</button>
+                                            <div class="style_prix col text-center">
+                                                <p class=" text-decoration-line-through">{{ $article->prix }} €</p>
+                                                @php
+                                                    $prixremise = $article->prix - ($article->prix * $promoActuelle->reduction) / 100; //remise sur article promo
+                                                @endphp
+                                                <p class="text-danger">{{ number_format($prixremise, 2, ',', ' ') }} €</p>
+                                            </div>
 
-                                                    </form>
-                                                @else
-                                                    <!-- si le produit n'est pas dans les favoris-->
-                                                    <form method="post" action="{{ route('favoris.store') }}">
-                                                        @csrf
-                                                        <input type="hidden" value="{{ $article->id }}"
-                                                            name="articleId">
-                                                        <button type="submit"
-                                                            class="btn btn-outline-secondary m-2">Ajouter aux
-                                                            favoris</button>
-                                                    </form>
+                                            <div class="row text-center">
+                                                <form method="POST" action="{{ route('panier.add', $article) }}"
+                                                    class="form-inline d-inline-block">
+                                                    @csrf
+                                                    <input value="1" type="number" name="quantite"
+                                                        placeholder="Quantité" class="form-control m-1">
+                                                    <div class="col ml-5">
+                                                        <button type="submit" class="btn btn-warning m-1">Ajouter au
+                                                            panier</button>
+                                                    </div>
+                                                </form>
+                                                <div class="col ml-5">
+                                                    <a href="{{ route('articles.show', $article) }}">
+                                                        <button class="btn validerCommande">Détails produit</button>
+                                                    </a>
+                                                </div>
+                                                @if (Auth::user())
+                                                    <!-- si le produit est déjà dans les favoris-->
+                                                    @if (Auth::user()->isInFavorites($article))
+                                                        <!-- si dans les favoris-->
+                                                        <form method="post"
+                                                            action="{{ route('favoris.destroy', $article->id) }}">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit"
+                                                                class="btn btn-outline-danger m-2">Retirer
+                                                                des
+                                                                favoris</button>
+
+                                                        </form>
+                                                    @else
+                                                        <!-- si le produit n'est pas dans les favoris-->
+                                                        <form method="post" action="{{ route('favoris.store') }}">
+                                                            @csrf
+                                                            <input type="hidden" value="{{ $article->id }}"
+                                                                name="articleId">
+                                                            <button type="submit"
+                                                                class="btn btn-outline-secondary m-2">Ajouter aux
+                                                                favoris</button>
+                                                        </form>
+                                                    @endif
                                                 @endif
-                                            @endif
+                                            </div>
+
+
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
 
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <a href="register"><button class="btn btn-lg px-5 btn-success rounded-pill">Voir toutes
-                                les promotions</button></a>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a href="register"><button class="btn btn-lg px-5 btn-success rounded-pill">Voir toutes
+                                    les promotions</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
+
         <div class="container">
 
             {{-- Produits les mieux notés --}}

@@ -26,7 +26,7 @@
 
             <!--BOUCLE QUI AFFICHE LES ARTICES DANS LA REDUCTION-->
             <div class="container-fluid d-flex justify-content-center ">
-                <div class="row text-center mt-5 ">
+                <div class="row mt-5 ">
                     @foreach ($campagne->articles as $article)
                         <div class="col-md-3  text-center">
                             <div class="card p-2 border rounded">

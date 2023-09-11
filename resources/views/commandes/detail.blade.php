@@ -86,6 +86,7 @@
                 </table>
             </div>
 
+            <!--calcul des frais de port à partir de l'initialisation de $totalsans frais ligne 22-->
             @php
             $totalsansfrais += $total;
             @endphp
