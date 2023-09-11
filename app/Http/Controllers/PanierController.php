@@ -15,7 +15,6 @@ class PanierController extends Controller
 
 	public function show()
 	{
-		
 		return view("panier.show"); // resources\views\panier\show.blade.php
 	}
 

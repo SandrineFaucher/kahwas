@@ -5,15 +5,15 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center m-5"> {{ $article->nom }}</h1>
+    <h1 class="h1_show text-center m-5"> {{ $article->nom }}</h1>
 
     <div class="container mb-3">
         <div class="row">
-           
-                <div class="col-xl-6 d-flex justify-content-center">
-                    <img src="{{ asset("images/$article->image") }} " style="width:35vw" alt="imageArticle">
-                </div>
-            
+
+            <div class="col-xl-6 d-flex justify-content-center">
+                <img class="rounded-2" src="{{ asset("images/$article->image") }} " style="width:35vw" alt="imageArticle">
+            </div>
+
 
 
             <!-- =============================================== card description article ============================================= -->

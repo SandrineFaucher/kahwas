@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Modifier article
+    Kahwas - Catalogue
 @endsection
 
 
@@ -45,7 +45,7 @@
 
                     </div>
                 </div>
-                
+
                 <div class="row text-center">
                     <form method="POST" action="{{ route('panier.add', $article) }}"
                         class="form-inline d-inline-block">

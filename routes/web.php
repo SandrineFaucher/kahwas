@@ -40,6 +40,8 @@ Route::resource('/campagnes', CampagneController::class);
 //*****************Route pour les méthodes du Controller favoris*****************************/
 Route::resource('/favoris', \App\Http\Controllers\FavoriController::class)->except('create', 'show', 'update', 'edit');
 
+
+
 // **************** Les routes de gestion du panier **************** //
 
 Route::get('panier', [App\Http\Controllers\PanierController::class, 'show'])->name('panier.show');
@@ -53,6 +55,7 @@ Route::get('panier/remove/{article}', [App\Http\Controllers\PanierController::cl
 
 Route::get('panier/empty', [App\Http\Controllers\PanierController::class, 'empty'])->name('panier.empty');
 //« panier.empty » pour vider les produits du panier
+
 
 
 // *************** Les routes de la page Validation Panier *********** //
@@ -110,3 +113,5 @@ Route::resource('/adresse', App\Http\Controllers\AdresseController::class)->exce
 Route::fallback(function () {
     return view('404'); // la vue 404.blade.php
 });
+
+

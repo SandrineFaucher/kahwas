@@ -31,7 +31,7 @@ font-family: "june-expt-variable",sans-serif;
 
 */
 header {
-    background-image: url(/Applications/MAMP/htdocs/kahwas/public/images/background_h1.png);
+    background-image: url(/public/images/background_h1.png);
 }
 
 body {
@@ -80,13 +80,13 @@ h2 {
 
 .h1_panier {
     padding-bottom: 80px;
+    color: white;
     padding-top: 200px;
     font-size: 10em;
-    background-image: url(/public/images/404.jpeg);
-    background-size: contain;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    background-image: url(/public/images/panierGrande.png);
+    background-size: cover;
+    background-position-y: 33em;
+
 }
 
 h3,
@@ -536,5 +536,10 @@ ul {
     .h1_404 {
         font-size: 15em;
         padding-bottom: 155px;
+    }
+
+    .h1_show {
+        font-size: 3em;
+
     }
 }

@@ -4,6 +4,18 @@
     <!--TITRE PAGE-->
     <h1 class="page_title_campagne text-center">Campagnes en cours</h1>
 
+    <div class="btn-group dropup">
+        <button class="rounded-pill droptdown_gamme btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Choisissez une campagne
+        </button>
+        <ul class="dropdown-menu">
+            @foreach ($campagnes as $campagne)
+                <li class="dropdown-item"><a class="dropdown-item p-1" href="#{{ $campagne->nom }}">{{ $campagne->nom }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
     <!--BOUCLE QUI AFFICHE LES CAMPAGNES-->
     @foreach ($campagnes as $campagne)
         <div class="container-fluid text-center mt-5">
@@ -25,8 +37,8 @@
             </h4>
 
             <!--BOUCLE QUI AFFICHE LES ARTICES DANS LA REDUCTION-->
-            <div class="container-fluid d-flex justify-content-center ">
-                <div class="row mt-5 ">
+            <div class="container-fluid d-flex justify-content-center m-5">
+                <div class="row text-center mt-5 ">
                     @foreach ($campagne->articles as $article)
                         <div class="col-md-3  text-center">
                             <div class="card p-2 border rounded">
@@ -61,7 +73,7 @@
                                         <input value="1" type="number" name="quantite" placeholder="Quantité"
                                             class="form-control m-1">
                                         <div class="col ml-5">
-                                            <button type="submit" class="btn btn-warning m-1">Ajouter au
+                                            <button type="submit" class="ajoutValider btn m-1">Ajouter au
                                                 panier</button>
                                         </div>
                                     </form>
